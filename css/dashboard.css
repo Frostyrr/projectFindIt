@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #ffffff;
+    transition: ease 0.5s;
+}
+
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn.logout {
+    background: rgb(15, 15, 15);
+    color: white;
+    text-align: center;
+}
+
+.table-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 10px;
+    width: 900px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    animation: cardIn 0.4s ease-out;
+}
+
+table {
+    margin-top: 30px;
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    animation: fadeInTable 0.5s ease-out;
+}
+
+@keyframes fadeInTable {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: rgb(15, 15, 15);
+    color: white;
+}
+
+tr {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: rowFade 0.4s ease forwards;
+}
+
+@keyframes rowFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+tr:hover {
+    background: #f8f8f8;
+    transition: ease 0.2s;
+}
+
+.btn {
+    width: 100px;
+    padding: 8px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    transition: ease 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.btn.primary {
+    background: rgb(28, 28, 28);
+}
+
+.btn.secondary {
+    color: black;
+    background: white;
+    border: 1px solid #dbdbdb;
+}
+
+.th-primary {
+    border: 1px solid #dbdbdb;
+}
+

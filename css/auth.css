@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #ffffff;
+    transition: ease 0.5s;
+}
+
+.auth-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.auth-card form {
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 300px;
+    gap: 10px;
+    border-radius: 15px;
+    animation: popIn 0.5s ease-out;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.divider {
+    margin: 0 auto;
+    padding: 1px;
+    width: 30px;
+    background: rgb(20, 20, 20);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.auth-card form h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-card input {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #dbdbdb;
+    outline: none;
+}
+
+.auth-card input:focus {
+    color: black;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+}
+
+.button {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+    font-weight: bold;
+}
+
+.button:hover {
+    opacity: 0.9;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.button.primary {
+    margin-top: 15px;
+    background: rgb(20, 20, 20);
+    color: white;
+}
+
+.button.secondary {
+    color: black;
+    background: #ffffff99;
+    border: 1px solid #dbdbdb;
+}
+
+.auth-card form p {
+    margin-top: 10px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-card form a {
+    margin-left: 5px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.auth-card form a:hover {
+    transform: scale(1.1);
+}
+
+.popup {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #1e6d3b;
+    background: #8bd1a4;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    color: black;
+}
