@@ -5,7 +5,7 @@
 
 body {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #ffffff;
+    background: url('../images/heroBg.png') center/cover no-repeat;
     transition: ease 0.5s;
 }
 
@@ -19,6 +19,7 @@ body {
 .auth-card form {
     background: #ffffff;
     display: flex;
+    align-items: center;
     flex-direction: column;
     padding: 40px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -122,4 +123,36 @@ body {
     margin-bottom: 10px;
     padding: 10px;
     color: black;
+}
+
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dadce0;
+    border-radius: 6px;
+
+    text-decoration: none;
+    color: #3c4043;
+    font-weight: 500;
+
+    transition: 0.2s ease;
+}
+
+.google-btn img {
+    width: 18px;
+}
+
+.google-btn:hover {
+    background: #f8f9fa;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #5f6368;
+    margin-top: 25px;
 }

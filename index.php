@@ -14,9 +14,14 @@
                 <img src="images/findIcon.png">FindIt
             </a>
             <ul class="nav-links">
-                <li><a href="home.php">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="browse.php">Browse</a></li>
-                <li><a href="login.php">Login</a></li>
+                
+                <?php if (isset($_SESSION['user'])): ?>
+                    <li><a href="logout.php">Logout</a></li>
+                <?php else: ?>
+                    <li><a href="login.php">Login</a></li>
+                <?php endif; ?>
             </ul>
         </div>
     </nav>
@@ -28,8 +33,8 @@
             <p>A dedicated digital space to report, track, and recover lost items with ease.</p>
         </div>
         <div class="hero-buttons">
-           <a href="" class="btn primary">Find lost</a>
-            <a href="" class="btn secondary">Found something</a>
+           <a href="find_lost.php" class="btn primary">Find lost</a>
+            <a href="found_item.php" class="btn secondary">Found item</a>
         </div>
     </div>
 </body>
