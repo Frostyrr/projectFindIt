@@ -9,10 +9,10 @@ if (!isset($_GET['id'])) {
 }
 
 if (isset($_POST['update'])) {
-    $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $sql = "UPDATE `users` SET username='$username', password='$password' WHERE id = $id";
+    $sql = "UPDATE `users` SET email='$email', password='$password' WHERE id = $id";
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
@@ -39,8 +39,8 @@ $row = mysqli_fetch_assoc($result);
         <form action="" method="POST">
             <h2>Update Account</h2>
             <hr class="divider">
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" placeholder="Enter a new username" value="<?php echo $row['username']; ?>">
+            <label for="email">Email Address</label>
+            <input type="text" name="email" id="email" placeholder="Enter a new email address" value="<?php echo $row['email']; ?>">
             <label for="password">Password</label>
             <input type="password" name="password" id="password" placeholder="Enter a new password">
             <button type="submit" class="button primary" name="update">Update</button>
