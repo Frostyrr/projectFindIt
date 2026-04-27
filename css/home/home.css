@@ -266,7 +266,7 @@ body {
     height: 1px;
     background: rgba(204, 204, 204, 0.538);
     margin: 40px auto;
-    width: 70%;
+    width: 80%;
 }
 
 /* ── Navbar scroll shadow (JS adds .scrolled) ───────────────── */

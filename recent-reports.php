@@ -36,3 +36,5 @@
         <p>No recent lost items reported.</p>
     <?php endif; ?>
 </div>
+
+<script src="js/goToDetails.js"></script>
