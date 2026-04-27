@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php include 'navbar.php'; ?>
     <div class="form-container">
         <h2>Report a Lost Item</h2>
-        <form action="find_lost.php" method="POST" enctype="multipart/form-data">
+        <form action="" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Item Name</label>
                 <input type="text" name="item_name" required>
