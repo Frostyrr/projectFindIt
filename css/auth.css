@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
 * {
     margin: 0;
     padding: 0;
 }
 
 body {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     transition: ease 0.5s;
 }
 
@@ -37,7 +39,7 @@ body {
     flex-direction: column;
     padding: 40px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    width: 300px;
+    width: 400px;
     gap: 10px;
     border-radius: 15px;
     animation: popIn 0.5s ease-out;

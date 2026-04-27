@@ -1,52 +1,388 @@
-.feed-container {
-    max-width: 1200px;
-    margin: 100px auto;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-    gap: 20px; 
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ── Root tokens ────────────────────────────────────────────── */
+:root {
+    --green-900: #1a3d2b;
+    --green-700: #2d6147;
+    --green-500: #3d7a54;
+    --green-300: #6aab85;
+    --green-100: #e8f4ed;
+    --red-500:   #c0392b;
+    --red-100:   #fdecea;
+    --ink-900:   #111714;
+    --ink-600:   #3f4942;
+    --ink-300:   #8c9990;
+    --ink-100:   #f0f3f1;
+    --surface:   #ffffff;
+    --border:    #e2ebe6;
+    --shadow-sm: 0 1px 4px rgba(26,61,43,.06);
+    --shadow-md: 0 4px 20px rgba(26,61,43,.10);
+    --shadow-lg: 0 12px 40px rgba(26,61,43,.14);
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --transition: 0.22s cubic-bezier(.4,0,.2,1);
 }
 
-.item-card { 
-    border: 1px solid #ddd; 
-    border-radius: 10px; 
-    overflow: hidden; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+/* ── Page wrapper ───────────────────────────────────────────── */
+.browse-container {
+    max-width: 1240px;
+    margin: 90px auto 80px;
+    padding: 0 24px;
+    font-family: 'DM Sans', sans-serif;
 }
 
-.item-image { 
-    width: 100%; 
-    height: 200px; 
-    object-fit: cover; 
-    background: #f8f8f8; 
+/* ── Search section ─────────────────────────────────────────── */
+.search-section {
+    margin-bottom: 40px;
 }
 
-.item-details { 
-    padding: 15px; 
+.search-section h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--ink-900);
+    letter-spacing: -0.5px;
+    margin-bottom: 18px;
 }
 
-.badge { 
-    padding: 5px 10px;
-    border-radius: 15px; 
-    color: white; 
-    font-size: 12px; 
-    font-weight: bold; 
+.search-filter-form {
+    display: flex;
+    gap: 12px;
+    background: var(--surface);
+    padding: 18px 20px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.badge.lost { 
-    background: #d9534f; 
-    }
-        
-.badge.found { 
-    background: #5cb85c; 
+/* ── Search box ─────────────────────────────────────────────── */
+.search-box {
+    position: relative;
+    flex-grow: 1;
+    min-width: 260px;
 }
 
-.item-details h3 {
-    margin: 10px 0;
-}
-
-.description {
+.search-box input {
+    width: 100%;
+    padding: 13px 52px 13px 18px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    font-family: 'DM Sans', sans-serif;
     font-size: 14px;
-    color: #555; 
-    margin-top: 10px;
+    font-weight: 400;
+    color: var(--ink-900);
+    background: var(--ink-100);
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+    box-sizing: border-box;
+}
+
+.search-box input::placeholder {
+    color: var(--ink-300);
+}
+
+.search-box input:focus {
+    border-color: var(--green-500);
+    background: var(--surface);
+    box-shadow: 0 0 0 3.5px rgba(61,122,84,.13);
+}
+
+/* ── Search button ──────────────────────────────────────────── */
+.search-icon-btn {
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 9px;
+    background: var(--green-900);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    flex-shrink: 0;
+}
+
+.search-icon-btn:hover {
+    background: var(--green-700);
+    box-shadow: 0 4px 12px rgba(26,61,43,.25);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.search-icon-btn svg {
+    pointer-events: none;
+}
+
+/* ── Cards grid ─────────────────────────────────────────────── */
+.reports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+    gap: 24px;
+}
+
+/* ── Individual card ────────────────────────────────────────── */
+.report-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition), box-shadow var(--transition);
+    cursor: pointer;
+}
+
+.report-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ── Card image area ────────────────────────────────────────── */
+.card-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--ink-100);
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s cubic-bezier(.4,0,.2,1);
+}
+
+.report-card:hover .card-image {
+    transform: scale(1.04);
+}
+
+.placeholder-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-300);
+    letter-spacing: 0.3px;
+    background: linear-gradient(135deg, var(--ink-100) 0%, #e6ede9 100%);
+}
+
+/* ── Badges ─────────────────────────────────────────────────── */
+.card-badges {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 11px;
+    border-radius: 100px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: #fff;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 8px rgba(0,0,0,.18);
+}
+
+.badge.lost   { background: var(--red-500); }
+.badge.found  { background: var(--green-500); }
+
+/* ── Card body ──────────────────────────────────────────────── */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 18px 20px 16px;
+    gap: 6px;
+}
+
+.card-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.meta-item {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-300);
+    letter-spacing: 0.2px;
+}
+
+.card-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink-900);
+    margin: 0;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-desc {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink-600);
+    line-height: 1.6;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ── Divider ────────────────────────────────────────────────── */
+.card-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 10px 0 6px;
+}
+
+/* ── Card footer ────────────────────────────────────────────── */
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.card-location {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--ink-300);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 55%;
+}
+
+/* ── View Details button ────────────────────────────────────── */
+.view-details-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 14px;
+    background: var(--green-900);
+    color: #fff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.view-details-btn:hover {
+    background: var(--green-700);
+    box-shadow: 0 4px 14px rgba(26,61,43,.3);
+    transform: translateY(-1px);
+}
+
+/* ── No results state ───────────────────────────────────────── */
+.no-results {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 72px 40px;
+    background: var(--surface);
+    border: 1.5px dashed var(--border);
+    border-radius: var(--radius-lg);
+    color: var(--ink-300);
+}
+
+.no-results p {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--ink-600);
+}
+
+.no-results::before {
+    content: '🔍';
+    font-size: 42px;
+    line-height: 1;
+    opacity: .7;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .browse-container {
+        margin-top: 75px;
+        padding: 0 16px;
+    }
+
+    .search-section h2 {
+        font-size: 22px;
+    }
+
+    .search-filter-form {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 14px 16px;
+    }
+
+    .search-box {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .reports-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+    }
+
+    .card-content {
+        padding: 14px 15px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .reports-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .view-details-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .card-location {
+        max-width: 100%;
+    }
 }

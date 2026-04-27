@@ -1,21 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+    --green-900: #1a3d2b;
+    --green-700: #2d6147;
+    --green-500: #3d7a54;
+    --green-100: #e8f4ed;
+    --red-500:   #c0392b;
+    --ink-900:   #111714;
+    --ink-600:   #3f4942;
+    --ink-300:   #8c9990;
+    --ink-100:   #f0f3f1;
+    --surface:   #ffffff;
+    --border:    #e2ebe6;
+    --shadow-sm: 0 1px 4px rgba(26,61,43,.06);
+    --shadow-md: 0 4px 20px rgba(26,61,43,.10);
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --transition: 0.22s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── Form card ──────────────────────────────────────────────── */
 .form-container {
-    max-width: 600px; 
-    margin: 100px auto; 
-    padding: 20px; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-    border-radius: 20px; 
+    max-width: 620px;
+    margin: 100px auto 80px;
+    padding: 0 20px;
+    font-family: 'DM Sans', sans-serif;
 }
 
-.form-group { 
-    margin-bottom: 15px;
-    display: flex; 
-    flex-direction: column; 
+.form-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 44px 44px 40px;
 }
 
-.form-group input, 
-.form-group textarea { 
-    padding: 10px; 
-    margin-top: 5px; 
-    border: 1px solid #ddd;
-    border-radius: 5px; 
+/* ── Form heading ───────────────────────────────────────────── */
+.form-card h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--ink-900);
+    letter-spacing: -0.4px;
+    margin-bottom: 6px;
+}
+
+.form-card .form-subtitle {
+    font-size: 13.5px;
+    color: var(--ink-300);
+    margin-bottom: 32px;
+}
+
+/* ── Divider under heading ──────────────────────────────────── */
+.form-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin-bottom: 28px;
+}
+
+/* ── Field groups ───────────────────────────────────────────── */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--ink-600);
+}
+
+/* ── Inputs & textareas ─────────────────────────────────────── */
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="email"],
+.form-group textarea {
+    padding: 12px 15px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--ink-900);
+    background: var(--ink-100);
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+    resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--ink-300);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--green-500);
+    background: var(--surface);
+    box-shadow: 0 0 0 3.5px rgba(61,122,84,.12);
+}
+
+/* ── Date input ─────────────────────────────────────────────── */
+.form-group input[type="date"] {
+    color-scheme: light;
+}
+
+/* ── File upload ────────────────────────────────────────────── */
+.form-group input[type="file"] {
+    padding: 10px 14px;
+    border: 1.5px dashed var(--border);
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--ink-300);
+    background: var(--ink-100);
+    cursor: pointer;
+    transition: border-color var(--transition), background var(--transition);
+}
+
+.form-group input[type="file"]:hover {
+    border-color: var(--green-300);
+    background: var(--green-100);
+}
+
+.form-group .file-hint {
+    font-size: 11.5px;
+    color: var(--ink-300);
+    margin-top: -2px;
+}
+
+/* ── Two-column row ─────────────────────────────────────────── */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* ── Submit button ──────────────────────────────────────────── */
+.btn.primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px 24px;
+    background: var(--green-900);
+    color: #fff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.btn.primary:hover {
+    background: var(--green-700);
+    box-shadow: 0 6px 20px rgba(26,61,43,.28);
+    transform: translateY(-1px);
+}
+
+.btn.primary:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* ── Mobile ─────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+    .form-container {
+        margin-top: 80px;
+        padding: 0 16px;
+    }
+
+    .form-card {
+        padding: 28px 22px 26px;
+    }
+
+    .form-card h2 {
+        font-size: 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
 }
