@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $item_name = $_POST['item_name'];
     $description = $_POST['description'];
     $location = $_POST['location'];
-    $date_lost = $_POST['date_lost'];
+    $date_found = $_POST['date_found'];
     $contact_info = $_POST['contact_info'];
     
     $image_path = null;
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $stmt = $conn->prepare("INSERT INTO items (user_email, type, item_name, description, location, date_lost_found, image_path, contact_info) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssss", $user_email, $type, $item_name, $description, $location, $date_lost, $image_path, $contact_info);
+    $stmt->bind_param("ssssssss", $user_email, $type, $item_name, $description, $location, $date_found, $image_path, $contact_info);
     
     if ($stmt->execute()) {
         header("Location: browse.php?msg=lost_reported");
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="form-card">
 
             <h2>Report a Lost Item</h2>
-            <p class="form-subtitle">Fill in the details below to help others identify your item.</p>
+            <p class="form-subtitle">Fill in the details below to help others identify the item.</p>
             <hr class="form-divider">
 
             <form action="" method="POST" enctype="multipart/form-data">
@@ -73,12 +73,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="location">Where did you lose it?</label>
-                        <input type="text" id="location" name="location" placeholder="e.g. Gaisano Mall" required>
+                        <label for="location">LOCATION FOUND</label>
+                        <input type="text" id="location" name="location" placeholder="e.g. CSUCC Athenaeum" required>
                     </div>
                     <div class="form-group">
-                        <label for="date_lost">Date Lost</label>
-                        <input type="date" id="date_lost" name="date_lost" required>
+                        <label for="date_found">Date Found</label>
+                        <input type="date" id="date_found" name="date_found" required>
                     </div>
                 </div>
 
