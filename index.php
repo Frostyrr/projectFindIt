@@ -30,8 +30,12 @@ $result = $conn->query($sql);
             <p>A dedicated digital space to report, track, and recover lost items with ease.</p>
         </div>
         <div class="hero-buttons">
-           <a href="browse.php" class="btn primary">Find lost item</a>
-            <a href="report.php" class="btn secondary">Report lost item</a>
+            <a href="browse.php" class="btn primary">Find lost item</a>
+            <?php if (isset($_SESSION['user'])): ?>
+                <a href="report.php" class="btn secondary">Report lost item</a>
+            <?php else: ?>
+                <a href="#" onclick="openModal()" class="btn secondary">Report lost item</a>
+            <?php endif; ?>
         </div>
     </div>
 
