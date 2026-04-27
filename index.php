@@ -106,6 +106,7 @@ $result = $conn->query($sql);
     </footer>
 
     <script src="js/loginModal.js"></script>
+    <script src="js/goToDetail.sjs"></script>
     <script>
         // Add .scrolled class to navbar on scroll for elevated shadow
         const navbar = document.querySelector('.navbar');

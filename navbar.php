@@ -5,9 +5,9 @@
         </a>
         <ul class="nav-links">
             <li><a href="index.php">Home</a></li>
-            <li><a href="index.php#recent-reports">Recent Reports</a></li>
             <li><a href="browse.php">Browse</a></li>
-
+            <li><a href="index.php#recent-reports">Recent Reports</a></li>
+            <li><a href="report.php">Report</a></li>
                 
             <?php if (isset($_SESSION['user'])): ?>
                 <li><a href="logout.php">Logout</a></li>

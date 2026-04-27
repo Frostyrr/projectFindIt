@@ -1,7 +1,8 @@
 <div class="reports-grid">
     <?php if ($result && $result->num_rows > 0): ?>
         <?php while($row = $result->fetch_assoc()): ?>
-            <div class="report-card">
+            <div class="report-card" onclick="goToDetails(<?= $row['id'] ?>)">
+
                 <div class="card-image-container">
                     <?php if (!empty($row['image_path'])): ?>
                         <img src="<?= htmlspecialchars($row['image_path']) ?>" class="card-image" alt="Item Image">

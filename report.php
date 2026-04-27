@@ -84,8 +84,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <div class="form-group">
                     <label for="item_image">Upload Image</label>
-                    <input type="file" id="item_image" name="item_image" class="file-input" accept="image/*">
-                    <span class="file-hint">JPG, PNG or WEBP — max 5 MB</span>
+
+                    <input type="file" id="item_image" name="item_image" accept="image/*" hidden>
+
+                    <label for="item_image" class="file-upload-box">
+                        <div class="file-upload-content">
+                            <span class="upload-title">Click to upload or drag file here</span>
+                            <span class="file-hint">JPG, PNG or WEBP — max 5 MB</span>
+                        </div>
+                    </label>
+
+                    <span id="file-name" class="file-name">No file chosen</span>
                 </div>
 
                 <div class="form-group">
@@ -101,5 +110,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <script src="js/loginModal.js"></script>
+    <script src="js/fileUpload.js"></script>
 </body>
 </html>
