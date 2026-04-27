@@ -46,14 +46,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Report Lost Item - FindIt</title>
     <link rel="stylesheet" href="css/home/main.css">
-    <style>
-        .form-container { max-width: 600px; margin: 100px auto; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-radius: 10px; }
-        .form-group { margin-bottom: 15px; display: flex; flex-direction: column; }
-        .form-group input, .form-group textarea { padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 5px; }
-    </style>
+    <link rel="stylesheet" href="css/report.css">
 </head>
 <body>
-    <?php include 'navbar.php'; /* Optional: split your nav into a separate file */ ?>
+    <?php include 'navbar.php'; ?>
     <div class="form-container">
         <h2>Report a Lost Item</h2>
         <form action="find_lost.php" method="POST" enctype="multipart/form-data">

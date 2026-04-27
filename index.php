@@ -10,25 +10,12 @@ session_start();
     <title>FindIt</title>
     <link rel="icon" type="image/x-icon" href="images/findIconWithBG.png">
     <link rel="stylesheet" href="css/home/main.css">
+    <link rel="stylesheet" href="css/auth.css">
+
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="home.php" class="nav-brand">
-                <img src="images/findIcon.png">FindIt
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="browse.php">Browse</a></li>
-                
-                <?php if (isset($_SESSION['user'])): ?>
-                    <li><a href="logout.php">Logout</a></li>
-                <?php else: ?>
-                    <li><a href="login.php">Login</a></li>
-                <?php endif; ?>
-            </ul>
-        </div>
-    </nav>
+    <?php include 'navbar.php'; ?>
+    <?php include 'login.php'; ?>
     <div class="hero">
         
         <div class="hero-text">
@@ -37,9 +24,15 @@ session_start();
             <p>A dedicated digital space to report, track, and recover lost items with ease.</p>
         </div>
         <div class="hero-buttons">
-           <a href="find_lost.php" class="btn primary">Find lost</a>
-            <a href="found_item.php" class="btn secondary">Found item</a>
+           <a href="browse.php" class="btn primary">Find lost item</a>
+            <a href="report.php" class="btn secondary">Report found item</a>
         </div>
     </div>
+
+    <section class="recent-reports">
+
+    </section>
+
+    <script src="js/loginModal.js"></script>
 </body>
 </html>
