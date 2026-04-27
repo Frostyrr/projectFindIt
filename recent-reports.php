@@ -16,7 +16,7 @@
                             
                 <div class="card-content">
                     <div class="card-meta">
-                        <span class="meta-item">🏷️ Electronics</span> <span class="meta-item">📅 <?= date('M d, Y', strtotime($row['date_lost_found'] ?? $row['created_at'])) ?></span>
+                        <span class="meta-item">📅 <?= date('M d, Y', strtotime($row['date_lost_found'] ?? $row['created_at'])) ?></span>
                     </div>
                                 
                     <h3 class="card-title"><?= htmlspecialchars($row['item_name']) ?></h3>

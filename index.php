@@ -39,7 +39,7 @@ $result = $conn->query($sql);
         </div>
     </div>
 
-    <section class="recent-reports-section">
+    <section class="recent-reports-section" id="recent-reports">
         <div class="reports-container">
             <div class="reports-header">
                 <div class="reports-title">
