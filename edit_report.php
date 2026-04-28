@@ -52,12 +52,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    $update_stmt = $conn->prepare("UPDATE items SET item_name=?, description=?, location=?, date_lost_found=?, image_path=?, contact_info=?, status=? WHERE id=? AND user_email=?");
-    $update_stmt->bind_param("sssssssss", $item_name, $description, $location, $date_found, $image_path, $contact_info, $status, $item_id, $user_email);
+    $update_stmt = $conn->prepare(
+        "UPDATE items SET item_name=?, 
+        description=?, 
+        location=?, 
+        date_lost_found=?, 
+        image_path=?, 
+        contact_info=?, 
+        status=? 
+        WHERE id=? AND user_email=?"
+        );
+    
+    $update_stmt->bind_param(
+        "sssssssis", 
+        $item_name, 
+        $description, 
+        $location, 
+        $date_found, 
+        $image_path, 
+        $contact_info, 
+        $status, 
+        $item_id, 
+        $user_email
+        );
     
     if ($update_stmt->execute()) {
         header("Location: profile.php?msg=updated");
         exit();
+    } else {
+        die("Update failed: " . $conn->error); 
     }
 }
 ?>

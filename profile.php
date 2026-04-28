@@ -40,8 +40,8 @@ $result = $stmt->get_result();
     <link rel="stylesheet" href="css/auth.css">
     <link rel="stylesheet" href="css/recent-reports.css">
     <link rel="stylesheet" href="css/pages-section.css">
-    <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="css/profile-modals.css">
+    <link rel="stylesheet" href="css/profile/profile.css">
+    <link rel="stylesheet" href="css/profile/delete-modals.css">
 </head>
 <body>
     
