@@ -28,12 +28,11 @@
                         </a>
                         <ul class="dropdown-menu" id="profileDropdown">
                             <li>
-                                <a href="dashboard.php">
-                                    <span class="material-symbols-outlined">dashboard</span>
-                                    Dashboard
+                                <a href="profile.php">
+                                    <span class="material-symbols-outlined">account_circle</span>
+                                    Profile
                                 </a>
                             </li>
-                            <li><a href="settings.php">Settings</a></li>
                             <li>
                                 <a href="logout.php">
                                     <span class="material-symbols-outlined">logout</span>
@@ -44,7 +43,6 @@
                     </li>
                 <?php else: ?>
                     <li>
-                        <span class="material-symbols-outlined">login</span>
                         <a href="#" class="nav-login-button" onclick="openModal()">
                             Login
                         </a>

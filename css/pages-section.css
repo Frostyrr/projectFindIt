@@ -1,0 +1,40 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 40px;
+}
+
+.page-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: white;
+    border: 1px solid #e2ebe6;
+    color: #111714;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.page-link.previous {
+    width: 100px;
+}
+
+.page-link.next {
+    width: 70px;
+}
+
+.page-link:hover {
+    background: #f0f3f1;
+}
+
+.page-link.active {
+    background: #1a3d2b;
+    color: white;
+    border-color: #1a3d2b;
+}

@@ -60,6 +60,8 @@ $stmt->close();
     <link rel="stylesheet" href="css/home/main.css">
     <link rel="stylesheet" href="css/auth.css">
     <link rel="stylesheet" href="css/item_details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
 </head>
 <body>
     <?php include 'navbar.php'; ?>

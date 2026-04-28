@@ -6,20 +6,40 @@ include 'db.php';
 $search_query = isset($_GET['search']) ? $conn->real_escape_string($_GET['search']) : '';
 $date_filter = isset($_GET['date']) ? $conn->real_escape_string($_GET['date']) : '';
 
-// Base query
-$sql = "SELECT * FROM items WHERE status = 'active'";
+// --- Pagination Setup ---
+$limit = 9; // Number of items per page
+$page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
+if ($page < 1) $page = 1; // Prevent negative pages
+$offset = ($page - 1) * $limit;
+
+// Base condition for all queries
+$where_sql = "WHERE status = 'active'";
 
 // Append conditions if filters are applied
 if (!empty($search_query)) {
-    $sql .= " AND item_name LIKE '%$search_query%'";
+    $where_sql .= " AND item_name LIKE '%$search_query%'";
 }
-
 if (!empty($date_filter)) {
-    $sql .= " AND DATE(date_lost_found) = '$date_filter'";
+    $where_sql .= " AND DATE(date_lost_found) = '$date_filter'";
 }
 
-$sql .= " ORDER BY created_at DESC";
+// 1. Get the total number of items to calculate total pages
+$count_sql = "SELECT COUNT(*) as total FROM items " . $where_sql;
+$count_result = $conn->query($count_sql);
+$total_items = $count_result->fetch_assoc()['total'];
+$total_pages = ceil($total_items / $limit);
+
+// 2. Fetch the items for the current page
+$sql = "SELECT * FROM items " . $where_sql . " ORDER BY created_at DESC LIMIT $limit OFFSET $offset";
 $result = $conn->query($sql);
+
+// Helper function to keep search/date filters in pagination links
+function getPageLink($pageNum, $search, $date) {
+    $params = ['page' => $pageNum];
+    if (!empty($search)) $params['search'] = $search;
+    if (!empty($date)) $params['date'] = $date;
+    return "?" . http_build_query($params);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +49,45 @@ $result = $conn->query($sql);
     <link rel="icon" type="image/x-icon" href="images/findIconWithBG.png">
     <link rel="stylesheet" href="css/home/main.css">
     <link rel="stylesheet" href="css/auth.css">
-    <link rel="stylesheet" href="css/recent-reports.css"> <link rel="stylesheet" href="css/browse.css">
+    <link rel="stylesheet" href="css/recent-reports.css"> 
+    <link rel="stylesheet" href="css/browse.css">
+    
+    <style>
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            grid-column: 1 / -1;
+        }
+        .page-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 38px;
+            height: 38px;
+            padding: 0 12px;
+            border-radius: 8px;
+            background: #ffffff;
+            border: 1px solid #e2ebe6;
+            color: #111714;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        .page-link:hover {
+            background: #f0f3f1;
+            border-color: #c9d6cf;
+        }
+        .page-link.active {
+            background: #1a3d2b; /* FindIt Green */
+            color: #ffffff;
+            border-color: #1a3d2b;
+        }
+    </style>
 </head>
 <body>
     <?php include 'navbar.php'; ?>
@@ -48,13 +106,15 @@ $result = $conn->query($sql);
                         placeholder="Search item name..." 
                         value="<?= htmlspecialchars($search_query) ?>"
                     >
+                    <?php if(!empty($date_filter)): ?>
+                        <input type="hidden" name="date" value="<?= htmlspecialchars($date_filter) ?>">
+                    <?php endif; ?>
 
                     <button type="submit" class="search-icon-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 24 24">
                             <path d="M10 2a8 8 0 105.293 14.293l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z"/>
                         </svg>
                     </button>
-
                 </div>
 
             </form>
@@ -100,12 +160,48 @@ $result = $conn->query($sql);
                         </div>
                     </div>
                 <?php endwhile; ?>
+                
             <?php else: ?>
-                <div class="no-results">
+                <div class="no-results" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
                     <p>No items found matching your criteria.</p>
                 </div>
             <?php endif; ?>
         </div>
+
+        <?php if ($total_pages > 1): ?>
+            <div class="pagination">
+                <?php if ($page > 1): ?>
+                    <a href="<?= getPageLink($page - 1, $search_query, $date_filter) ?>" class="page-link">&laquo; Prev</a>
+                <?php endif; ?>
+
+                <?php 
+                // Only show a reasonable number of page links (e.g., current, +/- 2 pages)
+                $start_page = max(1, $page - 2);
+                $end_page = min($total_pages, $page + 2);
+
+                if ($start_page > 1) {
+                    echo '<a href="' . getPageLink(1, $search_query, $date_filter) . '" class="page-link">1</a>';
+                    if ($start_page > 2) echo '<span class="page-link" style="border:none; background:transparent;">...</span>';
+                }
+
+                for ($i = $start_page; $i <= $end_page; $i++): 
+                ?>
+                    <a href="<?= getPageLink($i, $search_query, $date_filter) ?>" class="page-link <?= $i === $page ? 'active' : '' ?>"><?= $i ?></a>
+                <?php endfor; ?>
+
+                <?php 
+                if ($end_page < $total_pages) {
+                    if ($end_page < $total_pages - 1) echo '<span class="page-link" style="border:none; background:transparent;">...</span>';
+                    echo '<a href="' . getPageLink($total_pages, $search_query, $date_filter) . '" class="page-link">' . $total_pages . '</a>';
+                }
+                ?>
+
+                <?php if ($page < $total_pages): ?>
+                    <a href="<?= getPageLink($page + 1, $search_query, $date_filter) ?>" class="page-link">Next &raquo;</a>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+
     </div>
 
     <script src="js/loginModal.js"></script>

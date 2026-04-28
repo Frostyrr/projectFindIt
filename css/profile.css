@@ -1,0 +1,183 @@
+/* Layout Container */
+.profile-container {
+    max-width: 1100px;
+    margin: 100px auto 60px; /* Leaves space for your navbar */
+    padding: 0 24px;
+}
+
+/* Reusable Card Base */
+.card {
+    background: #ffffff;
+    border: 1px solid #e2ebe6;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(26,61,43,.04);
+}
+
+/* ── Top Layout Grid ── */
+.profile-top-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+/* Header Specifics */
+.profile-info-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.profile-avatar-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e8f4ed;
+}
+
+.profile-container .profile-name {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 4px;
+    color: #111714;
+}
+
+.profile-email {
+    color: #3f4942;
+    font-size: 15px;
+    margin: 0 0 8px;
+}
+
+.auth-badge {
+    display: inline-block;
+    background: #f0f3f1;
+    color: #3f4942;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-weight: 600;
+}
+
+/* Settings Box */
+.settings-title {
+    font-size: 16px;
+    margin: 0 0 16px;
+    color: #111714;
+}
+
+.settings-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ── Reports Section ── */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e8f4ed;
+}
+
+.section-title {
+    font-size: 22px;
+    margin: 0;
+    color: #1a3d2b;
+}
+
+/* ── Grid for 3 Inline Cards ── */
+.profile-reports-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+/* Card Button Actions (Injected into recent-reports.css structure) */
+.profile-card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.p-btn {
+    flex: 1;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.p-btn.view-btn { background: #e8f4ed; color: #2d6147; }
+.p-btn.view-btn:hover { background: #d1e8db; }
+
+.p-btn.edit-btn { background: #f0f3f1; color: #3f4942; }
+.p-btn.edit-btn:hover { background: #e2ebe6; }
+
+.p-btn.delete-btn { background: #fdecea; color: #c0392b; }
+.p-btn.delete-btn:hover { background: #fadbd8; }
+
+/* Utility Classes */
+.w-full { width: 100%; box-sizing: border-box; }
+.text-center { text-align: center; display: inline-block; }
+
+.action-btn {
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+}
+
+.secondary-outline {
+    background: white; 
+    border: 1px solid #e2ebe6; 
+    color: #111714; 
+}
+
+.secondary-outline:hover { 
+    background: #f0f3f1; 
+}
+
+.danger-btn { 
+    background: #fdecea; 
+    color: #c0392b; 
+}
+
+.danger-btn:hover { 
+    background: #c0392b; 
+    color: white; 
+}
+
+.primary-btn {
+    background: #1a3d2b;
+    color: white; 
+    padding: 8px 16px; 
+    border-radius: 8px; 
+    text-decoration: none; 
+    font-weight: 600;
+}
+
+/* ── Responsive adjustments ── */
+@media (max-width: 950px) {
+    .profile-reports-grid {
+        grid-template-columns: repeat(2, 1fr); /* Drop to 2 columns */
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-top-grid {
+        grid-template-columns: 1fr; /* Stack header and settings */
+    }
+    .profile-reports-grid {
+        grid-template-columns: 1fr; /* Drop to 1 column on mobile */
+    }
+}
