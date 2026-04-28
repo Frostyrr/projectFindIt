@@ -110,5 +110,7 @@ $result = $conn->query($sql);
 
     <script src="js/loginModal.js"></script>
     <script src="js/goToDetails.js"></script>
+    <script src="js/DropDown.js"></script>
+
 </body>
 </html>

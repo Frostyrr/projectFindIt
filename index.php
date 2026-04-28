@@ -15,6 +15,7 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="css/home/main.css">
     <link rel="stylesheet" href="css/auth.css">
     <link rel="stylesheet" href="css/recent-reports.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 </head>
 <body>
 
@@ -106,7 +107,8 @@ $result = $conn->query($sql);
     </footer>
 
     <script src="js/loginModal.js"></script>
-    <script src="js/goToDetail.sjs"></script>
+    <script src="js/goToDetail.js"></script>
+    <script src="js/DropDown.js"></script>
     <script>
         // Add .scrolled class to navbar on scroll for elevated shadow
         const navbar = document.querySelector('.navbar');

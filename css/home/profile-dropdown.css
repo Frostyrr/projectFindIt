@@ -1,0 +1,92 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.dropdown-toggle:hover {
+    color: inherit;
+    transform: none;
+}
+
+/* Avatar */
+.profile-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border);
+    transition: border-color var(--transition);
+}
+
+.dropdown-toggle:hover .profile-avatar {
+    border-color: var(--green-500);
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: var(--surface);
+    min-width: 170px;
+    box-shadow: var(--shadow-md);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    list-style: none;
+    padding: 8px 0;
+    margin-top: 10px;
+    z-index: 1000;
+}
+
+.dropdown-menu.show {
+    display: block;
+    animation: popIn 0.2s ease-out;
+}
+
+/* Items */
+.dropdown-menu li {
+    padding: 0;
+}
+
+.dropdown-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: var(--ink-900);
+    text-decoration: none;
+    transition: background var(--transition), color var(--transition);
+}
+
+.dropdown-menu a:hover {
+    background: var(--ink-100);
+    color: var(--green-500);
+}
+
+/* Icons */
+.material-symbols-outlined {
+    font-size: 18px;
+    width: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.nav-links .dropdown-menu a::after {
+    display: none; /* Removes the underline hover effect from home.animations.css */
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
