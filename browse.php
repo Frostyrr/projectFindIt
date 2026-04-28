@@ -51,42 +51,8 @@ function getPageLink($pageNum, $search, $date) {
     <link rel="stylesheet" href="css/auth.css">
     <link rel="stylesheet" href="css/recent-reports.css"> 
     <link rel="stylesheet" href="css/browse.css">
-    
-    <style>
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            margin-top: 40px;
-            margin-bottom: 40px;
-            grid-column: 1 / -1;
-        }
-        .page-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 38px;
-            height: 38px;
-            padding: 0 12px;
-            border-radius: 8px;
-            background: #ffffff;
-            border: 1px solid #e2ebe6;
-            color: #111714;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.2s ease;
-        }
-        .page-link:hover {
-            background: #f0f3f1;
-            border-color: #c9d6cf;
-        }
-        .page-link.active {
-            background: #1a3d2b; /* FindIt Green */
-            color: #ffffff;
-            border-color: #1a3d2b;
-        }
+    <link rel="stylesheet" href="css/pages-section.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     </style>
 </head>
 <body>

@@ -1,0 +1,61 @@
+/* css/profile-modals.css */
+.custom-modal-overlay {
+    display: none !important; /* Hides it by default */
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(17, 23, 20, 0.5) !important;
+    backdrop-filter: blur(4px) !important;
+    z-index: 999999 !important; /* Forces it over the navbar */
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* We will use JavaScript to add this class when clicked */
+.custom-modal-overlay.show-modal {
+    display: flex !important; 
+}
+
+.custom-modal-card {
+    background: white;
+    padding: 32px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    text-align: center;
+    position: relative !important; /* Keeps it behaving normally inside the flexbox */
+    margin: auto !important; /* Safety fallback for centering */
+}
+
+.custom-modal-card h3 { 
+    margin: 0 0 12px; 
+    color: #111714; 
+    font-size: 20px; 
+}
+
+.custom-modal-card p { 
+    color: #3f4942; 
+    font-size: 14px; 
+    margin-bottom: 24px; 
+    line-height: 1.5; 
+}
+
+.custom-modal-actions { 
+    display: flex; 
+    gap: 12px; 
+    justify-content: center; 
+}
+
+.custom-modal-actions .btn { 
+    flex: 1; 
+    justify-content: center; 
+    align-items: center;
+    display: flex;
+}
