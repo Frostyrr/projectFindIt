@@ -3,7 +3,7 @@
         <span class="close-btn" onclick="closeModal()">&times;</span>
 
         <form action="" method="POST">
-
+            
             <h2>Sign in</h2>
             <hr class="divider">
             
