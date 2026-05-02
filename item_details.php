@@ -64,8 +64,8 @@ $stmt->close();
 
 </head>
 <body>
-    <?php include 'navbar.php'; ?>
-    <?php include 'login.php'; ?>
+    <?php include 'components/navbar.php'; ?>
+    <?php include 'auth/login.php'; ?>
 
     <div class="details-page-container">
         <div class="details-content">

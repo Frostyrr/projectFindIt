@@ -26,6 +26,10 @@
 .recent-reports-section {
     padding: 60px 20px;
     font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .reports-container {

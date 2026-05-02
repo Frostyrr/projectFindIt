@@ -93,8 +93,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="css/auth.css">
     <link rel="stylesheet" href="css/report.css"> </head>
 <body>
-    <?php include 'navbar.php'; ?>
-    <?php include 'login.php'; ?>
+    <?php include 'components/navbar.php'; ?>
+    <?php include 'auth/login.php'; ?>
 
     <div class="form-container" style="margin-top: 100px;">
         <div class="form-card">

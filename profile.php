@@ -45,8 +45,8 @@ $result = $stmt->get_result();
 </head>
 <body>
     
-    <?php include 'navbar.php'; ?>
-    <?php include 'login.php'; ?>
+    <?php include 'components/navbar.php'; ?>
+    <?php include 'auth/login.php'; ?>
 
     <div class="profile-container">
         <div class="profile-top-grid">
@@ -141,8 +141,8 @@ $result = $stmt->get_result();
         </section>
     </div>
 
-    <?php include 'delete-item-modal.php'; ?>
-    <?php include 'delete-account-modal.php'; ?>
+    <?php include 'components/delete-item-modal.php'; ?>
+    <?php include 'components/delete-account-modal.php'; ?>
 
     <script src="js/loginModal.js"></script>
     <script src="js/DropDown.js"></script>

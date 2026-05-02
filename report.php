@@ -50,8 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 </head>
 <body>
-    <?php include 'navbar.php'; ?>
-    <?php include 'login.php'; ?>
+    <?php include 'components/navbar.php'; ?>
+    <?php include 'auth/login.php'; ?>
 
     <div class="form-container">
         <div class="form-card">

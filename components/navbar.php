@@ -34,7 +34,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="logout.php">
+                                <a href="../auth/logout.php">
                                     <span class="material-symbols-outlined">logout</span>
                                     Logout
                                 </a>

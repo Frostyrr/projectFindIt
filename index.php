@@ -19,8 +19,8 @@ $result = $conn->query($sql);
 </head>
 <body>
 
-    <?php include 'navbar.php'; ?>
-    <?php include 'login.php'; ?>
+    <?php include 'components/navbar.php'; ?>
+    <?php include 'auth/login.php'; ?>
 
     <!-- Hero -->
     <div class="hero">
