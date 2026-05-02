@@ -64,8 +64,8 @@ $result = $stmt->get_result();
             <aside class="account-settings card">
                 <h3 class="settings-title">Account Actions</h3>
                 <div class="settings-actions">
-                    <button class="action-btn secondary-outline w-full" onclick="openAccountDeleteModal()">Delete Account</button>
-                    <a href="logout.php" class="action-btn danger-btn w-full text-center">Logout</a>
+                    <a href="logout.php" class="action-btn logout">Logout</a>
+                    <button class="action-btn danger-btn w-full text-center" onclick="openAccountDeleteModal()">Delete Account</button>
                 </div>
             </aside>
         </div>

@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once '/../db.php'; // Ensure this points to your actual database connection file
+// Fixed the file path issue here as well
+require_once '../db.php'; 
 
 // 1. Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
@@ -14,20 +15,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['item_id'])) {
     $user_id = $_SESSION['user_id'];
 
     try {
-        // 3. Delete the item ONLY if it belongs to the logged-in user
-        $stmt = $pdo->prepare("DELETE FROM items WHERE id = ? AND user_id = ?");
-        $stmt->execute([$item_id, $user_id]);
+        // 3. Delete the item ONLY if it belongs to the logged-in user using MySQLi
+        // Assuming your database connection variable in db.php is named $conn
+        $stmt = $conn->prepare("DELETE FROM items WHERE id = ? AND user_id = ?");
+        
+        // "ii" means we are passing two Integers ($item_id and $user_id)
+        $stmt->bind_param("ii", $item_id, $user_id);
+        $stmt->execute();
 
-        if ($stmt->rowCount() > 0) {
+        // Check if any rows were actually deleted
+        if ($stmt->affected_rows > 0) {
             // Success
             header("Location: profile.php?msg=item_deleted");
         } else {
             // Failed (item didn't exist or didn't belong to them)
             header("Location: profile.php?error=delete_failed");
         }
+        
+        $stmt->close();
         exit();
 
-    } catch (PDOException $e) {
+    } catch (Exception $e) {
         // Log the error in a real app, but for now display it to help you debug
         die("Database error during deletion: " . $e->getMessage());
     }

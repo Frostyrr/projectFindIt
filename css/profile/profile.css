@@ -135,12 +135,25 @@
     cursor: pointer;
     text-decoration: none;
     border: none;
+    transition: all ease 0.2s;
 }
 
 .secondary-outline {
     background: white; 
     border: 1px solid #e2ebe6; 
     color: #111714; 
+}
+
+.logout {
+    text-align: center;
+    background: #eafdeb; 
+    color: #2d6147;
+}
+
+.logout:hover {
+    background-color: #2d6147;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(3, 204, 27, 0.081), 0 6px 20px 0 rgba(0, 134, 25, 0.19);
 }
 
 .secondary-outline:hover { 
@@ -155,6 +168,7 @@
 .danger-btn:hover { 
     background: #c0392b; 
     color: white; 
+    box-shadow: 0 4px 8px 0 rgba(255, 0, 0, 0.2), 0 6px 20px 0 rgba(112, 0, 0, 0.19);
 }
 
 .primary-btn {
