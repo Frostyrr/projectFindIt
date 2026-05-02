@@ -7,7 +7,7 @@
             <h2>Sign in</h2>
             <hr class="divider">
             
-            <a href="google-login.php" class="google-btn">
+            <a href="auth/google-login.php" class="google-btn">
             <img src="images/google.png" alt="google">
                 Continue with Google
             </a>
