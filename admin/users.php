@@ -117,15 +117,15 @@ $totalUsers = $result->num_rows;
                             <?php while ($row = $result->fetch_assoc()): ?>
                             <tr id="row-<?= $row['id'] ?>">
                                 <td><span class="item-id">#<?= $row['id'] ?></span></td>
-                                <td class="td-item-name"><?= strtoupper(htmlspecialchars($row['oauth_provider'])) ?></td>
+                                <td class="td-item-name"><?= ucwords(htmlspecialchars($row['oauth_provider'])) ?></td>
                                 <td><?= htmlspecialchars($row['name'] ?? 'Unknown') ?></td>
                                 <td><?= htmlspecialchars($row['email']) ?></td>
-                                <td><?= strtoupper(htmlspecialchars($row['role'])) ?></td>
+                                <td><?= ucwords(htmlspecialchars($row['role'])) ?></td>
                                 <td>
                                     <div class="action-group">
                                         <!-- View -->
                                         <a href="../profile.php?id=<?= $row['id'] ?>"
-                                           class="btn-action" title="View item">
+                                           class="btn-action" title="View user">
                                             <i class="fas fa-eye"></i>
                                         </a>
                                     </div>

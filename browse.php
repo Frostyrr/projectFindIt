@@ -7,7 +7,7 @@ $search_query = isset($_GET['search']) ? $conn->real_escape_string($_GET['search
 $date_filter = isset($_GET['date']) ? $conn->real_escape_string($_GET['date']) : '';
 
 // --- Pagination Setup ---
-$limit = 9; // Number of items per page
+$limit = 20; // Number of items per page
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
 if ($page < 1) $page = 1; // Prevent negative pages
 $offset = ($page - 1) * $limit;

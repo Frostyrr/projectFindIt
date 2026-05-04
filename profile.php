@@ -7,7 +7,24 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-$user = $_SESSION['user'];
+if (isset($_GET['id'])) {
+    $id = (int) $_GET['id'];
+
+    $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result_user = $stmt->get_result();
+
+    if ($result_user->num_rows === 0) {
+        die("User not found.");
+    }
+
+    $user = $result_user->fetch_assoc();
+} else {
+    // fallback: own profile
+    $user = $_SESSION['user'];
+}
+
 $user_email = $user['email'];
 
 // --- Pagination Logic ---
