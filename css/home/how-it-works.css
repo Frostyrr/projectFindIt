@@ -3,8 +3,12 @@ html {
 }
 
 .how-it-works {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 80px 20px;
     background: var(--surface);
+    scroll-margin-top: 18vh;
 }
 
 .how-container {

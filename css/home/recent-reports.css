@@ -26,7 +26,7 @@
 .recent-reports-section {
     padding: 60px 20px;
     font-family: 'DM Sans', sans-serif;
-    min-height: 100vh;
+    scroll-margin-top: 10vh;
 }
 
 .reports-container {
