@@ -1,6 +1,6 @@
 <aside class="admin-sidebar">
     <a href="../index.php" class="sidebar-brand">
-        <div class="sidebar-brand-icon">🔍</div>
+        <div class="sidebar-brand-icon"><img src="../images/findIcon.png" height=30px width=auto></div>
         <div>
             <div class="sidebar-brand-text">FindIt</div>
             <div class="sidebar-brand-sub">Admin Panel</div>

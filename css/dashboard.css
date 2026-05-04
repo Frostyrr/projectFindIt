@@ -70,7 +70,7 @@ body {
     width: 34px;
     height: 34px;
     border-radius: 9px;
-    background: rgba(255,255,255,.12);
+    background: rgba(255, 255, 255, 0.829);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -143,11 +143,12 @@ body {
 
 .sidebar-link:hover i { opacity: 1; }
 
-.sidebar-link.active {
+/* .sidebar-link.active {
     background: rgba(255,255,255,.13);
     color: #fff;
     font-weight: 600;
 }
+*/
 
 .sidebar-link.active i { opacity: 1; }
 

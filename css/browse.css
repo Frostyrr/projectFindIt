@@ -212,6 +212,7 @@
     flex-direction: column;
     flex: 1;
     padding: 18px 20px 16px;
+    padding: 10px 15px 8px;
     gap: 6px;
 }
 
