@@ -1,0 +1,180 @@
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.45);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.open { display: flex; }
+
+.modal-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 32px;
+    max-width: 440px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.modal-box h3 { 
+    margin: 0 0 8px; 
+    font-size: 1.1rem; 
+}
+
+.modal-box p  {
+    color: #555; 
+    font-size: 0.9rem; 
+    margin: 0 0 20px; 
+    line-height: 1.5; 
+}
+
+.modal-box p.modal-warning { 
+    font-size: 0.8rem; 
+    color: #888; 
+    margin-top: -12px; 
+}
+
+.modal-actions { 
+    display: flex; 
+    gap: 10px; 
+    justify-content: flex-end; 
+}
+
+.modal-btn {
+    padding: 9px 20px;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.15s;
+}
+
+.modal-btn:hover { opacity: 0.85; }
+.modal-btn.cancel { 
+    background: #f5f5f5; 
+    color: #333; 
+    border: 1px solid #ddd; 
+}
+
+.modal-btn.danger { 
+    background: #dc2626; 
+    color: #fff; 
+}
+
+/* ── Admin banner ────────────────────────────────── */
+.admin-view-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fffbeb;
+    border: 1px solid #f59e0b;
+    border-left: 4px solid #f59e0b;
+    border-radius: 8px;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    font-size: 0.875rem;
+    color: #92400e;
+}
+
+.admin-view-banner i { 
+    color: #f59e0b; 
+    flex-shrink: 0; 
+}
+
+.admin-view-banner a { 
+    color: #92400e; 
+    font-weight: 600; 
+    text-decoration: underline; 
+}
+
+        /* ── Admin aside ─────────────────────────────────── */
+.admin-controls-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888;
+    margin: 0 0 12px;
+}
+
+.admin-meta-list {
+    list-style: none;
+    margin: 0 0 16px;
+    padding: 0;
+    font-size: 0.85rem;
+}
+
+.admin-meta-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.admin-meta-list li:last-child { border-bottom: none; }
+.meta-label { color: #888; font-size: 0.8rem; }
+.meta-value { font-weight: 600; color: #222; }
+.role-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.role-badge.admin { background: #fef3c7; color: #92400e; }
+.role-badge.user  { background: #d1fae5; color: #065f46; }
+.admin-divider { border: none; border-top: 1px solid #f0f0f0; margin: 4px 0 16px; }
+.admin-actions-group { display: flex; flex-direction: column; gap: 8px; }
+.admin-back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: #f4f4f4;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #e0e0e0;
+    transition: background 0.18s;
+}
+
+.admin-back-btn:hover { background: #e8e8e8; }
+.admin-delete-user-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+    cursor: pointer;
+    transition: background 0.18s;
+    width: 100%;
+}
+
+.admin-delete-user-btn:hover { 
+    background: #fee2e2; 
+}
+
+/* ── Admin view: hide Edit, restyle Delete ───────── */
+.admin-view .edit-btn { display: none !important; }
+.admin-view .delete-btn {
+    background: #fef2f2 !important;
+    color: #dc2626 !important;
+    border: 1px solid #fecaca !important;
+}

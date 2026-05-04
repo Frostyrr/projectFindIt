@@ -1,30 +1,65 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const deleteButtons = document.querySelectorAll('.open-delete-modal');
-    const deleteModal = document.getElementById('deleteItemModal');
-    const hiddenIdInput = document.getElementById('modal_item_id');
+// Profile-specific modal functions (renamed to avoid conflicts)
+function openProfileModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) {
+        console.error('Profile modal not found:', id);
+        return;
+    }
+    modal.classList.add('open');
+}
 
-    // Attach click event to every delete button on the profile items
-    deleteButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault(); // Stop any default button behavior
-            
-            // Grab the ID from data-id="X" on the button
-            const itemId = this.getAttribute('data-id');
-            
-            if (itemId) {
-                // Inject the ID into the form
-                hiddenIdInput.value = itemId;
-                // Show the modal
-                deleteModal.style.display = 'block';
-            } else {
-                console.error("No item ID found on the delete button.");
-            }
-        });
+function closeProfileModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) {
+        console.error('Profile modal not found:', id);
+        return;
+    }
+    modal.classList.remove('open');
+}
+
+// Close on backdrop click (profile modals only)
+document.querySelectorAll('.modal-overlay').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+        if (e.target === el) {
+            el.classList.remove('open');
+        }
     });
 });
 
-// Helper to close the modal
-function closeDeleteModal() {
-    document.getElementById('deleteItemModal').style.display = 'none';
-    document.getElementById('modal_item_id').value = ''; // clear it out for safety
+// Owner: populate and open item delete modal
+function openOwnerItemDelete(id, name) {
+    const idField = document.getElementById('ownerDeleteItemId');
+    const nameField = document.getElementById('ownerDeleteItemName');
+    
+    if (!idField) {
+        console.error('Owner delete item ID field not found');
+        return;
+    }
+    if (!nameField) {
+        console.error('Owner delete item name field not found');
+        return;
+    }
+    
+    idField.value = id;
+    nameField.textContent = name;
+    openProfileModal('ownerDeleteItemModal');
+}
+
+// Admin: populate and open item delete modal
+function openAdminItemDelete(id, name) {
+    const idField = document.getElementById('adminDeleteItemId');
+    const nameField = document.getElementById('adminDeleteItemName');
+    
+    if (!idField) {
+        console.error('Admin delete item ID field not found');
+        return;
+    }
+    if (!nameField) {
+        console.error('Admin delete item name field not found');
+        return;
+    }
+    
+    idField.value = id;
+    nameField.textContent = name;
+    openProfileModal('adminDeleteItemModal');
 }

@@ -1,6 +1,6 @@
 <div id="loginModal" class="modal">
     <div class="auth-card">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <span class="close-btn" onclick="closeLoginModal()">&times;</span>
 
         <form action="" method="POST">
             

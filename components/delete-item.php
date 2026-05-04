@@ -1,47 +1,59 @@
 <?php
 session_start();
-// Fixed the file path issue here as well
-require_once '../db.php'; 
+require_once '../db.php';
 
-// 1. Check if the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php?error=unauthorized");
+// Security check
+if (!isset($_SESSION['user'])) {
+    header("Location: ../index.php?error=unauthorized");
     exit();
 }
 
-// 2. Process the deletion if a POST request is received
+// Process deletion
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['item_id'])) {
-    $item_id = filter_var($_POST['item_id'], FILTER_SANITIZE_NUMBER_INT);
-    $user_id = $_SESSION['user_id'];
-
-    try {
-        // 3. Delete the item ONLY if it belongs to the logged-in user using MySQLi
-        // Assuming your database connection variable in db.php is named $conn
-        $stmt = $conn->prepare("DELETE FROM items WHERE id = ? AND user_id = ?");
+    
+    $item_id = (int) $_POST['item_id'];
+    $user_email = $_SESSION['user']['email'];
+    
+    // First verify the item belongs to this user
+    $check_stmt = $conn->prepare("SELECT id FROM items WHERE id = ? AND user_email = ?");
+    $check_stmt->bind_param("is", $item_id, $user_email);
+    $check_stmt->execute();
+    $result = $check_stmt->get_result();
+    
+    if ($result->num_rows === 0) {
+        // Item doesn't exist or doesn't belong to user
+        $check_stmt->close();
         
-        // "ii" means we are passing two Integers ($item_id and $user_id)
-        $stmt->bind_param("ii", $item_id, $user_id);
-        $stmt->execute();
-
-        // Check if any rows were actually deleted
-        if ($stmt->affected_rows > 0) {
-            // Success
-            header("Location: profile.php?msg=item_deleted");
-        } else {
-            // Failed (item didn't exist or didn't belong to them)
-            header("Location: profile.php?error=delete_failed");
-        }
-        
-        $stmt->close();
+        // Use the redirect parameter if provided, otherwise go to profile
+        $redirect = isset($_POST['redirect']) ? $_POST['redirect'] : 'profile.php';
+        header("Location: ../" . $redirect . "?error=delete_failed");
         exit();
-
-    } catch (Exception $e) {
-        // Log the error in a real app, but for now display it to help you debug
-        die("Database error during deletion: " . $e->getMessage());
     }
+    $check_stmt->close();
+    
+    // Delete the item
+    $stmt = $conn->prepare("DELETE FROM items WHERE id = ? AND user_email = ?");
+    $stmt->bind_param("is", $item_id, $user_email);
+    $stmt->execute();
+    
+    if ($stmt->affected_rows > 0) {
+        $stmt->close();
+        
+        // Use the redirect parameter if provided, otherwise go to profile
+        $redirect = isset($_POST['redirect']) ? $_POST['redirect'] : 'profile.php';
+        header("Location: ../" . $redirect . "?msg=item_deleted");
+        exit();
+    } else {
+        $stmt->close();
+        
+        // Use the redirect parameter if provided, otherwise go to profile
+        $redirect = isset($_POST['redirect']) ? $_POST['redirect'] : 'profile.php';
+        header("Location: ../" . $redirect . "?error=delete_failed");
+        exit();
+    }
+    
 } else {
-    // Redirect if accessed directly via URL
-    header("Location: profile.php");
+    header("Location: ../profile.php");
     exit();
 }
 ?>
