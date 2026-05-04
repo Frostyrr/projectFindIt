@@ -19,7 +19,7 @@
             <i class="fas fa-users"></i> Users
         </a>
         <div class="sidebar-label" style="margin-top:10px">Content</div>
-        <a href="../browse.php" class="sidebar-link" target="_blank">
+        <a href="../index.php" class="sidebar-link" target="_blank">
             <i class="fas fa-arrow-up-right-from-square"></i> View Site
         </a>
         <a href="../report.php" class="sidebar-link <?= $current_page === 'report.php' ? 'active' : '' ?>">

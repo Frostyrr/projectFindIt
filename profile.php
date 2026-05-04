@@ -250,7 +250,7 @@ $uid_param = $viewing_as_admin ? (int)$user['id'] : null;
                                 : "You haven't posted any reports yet." ?>
                         </p>
                         <?php if (!$viewing_as_admin): ?>
-                            <a href="report.php" class="btn primary-btn">Create your first report</a>
+                            <a href="report.php" class="btn first-report">Create your first report</a>
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>

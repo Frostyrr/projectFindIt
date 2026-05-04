@@ -14,6 +14,7 @@
                 <?php else: ?>
                     <li><a href="#" onclick="openLoginModal()">Report</a></li>
                 <?php endif; ?>
+                <li><a href="index.php#how-it-works">How It Works</a></li>
             </ul>
         </div>
 
