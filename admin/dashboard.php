@@ -154,35 +154,7 @@ try {
 <!-- ══════════════════════════════════════════════════════════
      SIDEBAR
 ══════════════════════════════════════════════════════════ -->
-<aside class="admin-sidebar">
-    <a href="../index.php" class="sidebar-brand">
-        <div class="sidebar-brand-icon">🔍</div>
-        <div>
-            <div class="sidebar-brand-text">FindIt</div>
-            <div class="sidebar-brand-sub">Admin Panel</div>
-        </div>
-    </a>
-    <nav class="sidebar-nav">
-        <div class="sidebar-label">Main</div>
-        <a href="dashboard.php" class="sidebar-link active"><i class="fas fa-chart-pie"></i> Overview</a>
-        <a href="items.php"     class="sidebar-link"><i class="fas fa-box-open"></i> All Items</a>
-        <a href="users.php"     class="sidebar-link"><i class="fas fa-users"></i> Users</a>
-        <div class="sidebar-label" style="margin-top:10px">Content</div>
-        <a href="../browse.php" class="sidebar-link" target="_blank"><i class="fas fa-arrow-up-right-from-square"></i> View Site</a>
-        <a href="../report.php" class="sidebar-link"><i class="fas fa-flag"></i> Report Item</a>
-        <div class="sidebar-label" style="margin-top:10px">Settings</div>
-        <a href="settings.php"  class="sidebar-link"><i class="fas fa-gear"></i> Settings</a>
-    </nav>
-    <div class="sidebar-footer">
-        <div class="sidebar-user">
-            <div class="sidebar-avatar"><i class="fas fa-user-shield"></i></div>
-            <div class="sidebar-user-info">
-                <span class="sidebar-user-name"><?= htmlspecialchars($_SESSION['name'] ?? 'Admin') ?></span>
-                <span class="sidebar-user-role">Administrator</span>
-            </div>
-        </div>
-    </div>
-</aside>
+<?php include '../admin/sidebar.dashboard.php'?>
 
 <!-- ══════════════════════════════════════════════════════════
      MAIN CONTENT
@@ -336,114 +308,12 @@ try {
 <!-- ══════════════════════════════════════════════════════════
      EDIT MODAL
 ══════════════════════════════════════════════════════════ -->
-<div class="modal-overlay" id="editModal" role="dialog" aria-modal="true" aria-labelledby="editModalTitle">
-    <div class="modal">
-        <div class="modal-header">
-            <h3 id="editModalTitle"><i class="fas fa-pen"></i> Edit Item <span id="edit_id_label"></span></h3>
-            <button class="modal-close" onclick="closeModal('editModal')" aria-label="Close">
-                <i class="fas fa-xmark"></i>
-            </button>
-        </div>
-
-        <form method="POST" action="dashboard.php" id="editForm">
-            <input type="hidden" name="action"  value="edit">
-            <input type="hidden" name="item_id" id="edit_item_id">
-
-            <div class="modal-body">
-
-                <div class="modal-form-row">
-                    <div class="modal-form-group">
-                        <label for="edit_item_name">Item Name <span class="req">*</span></label>
-                        <input type="text" id="edit_item_name" name="item_name"
-                               placeholder="e.g. Brown Leather Backpack" required>
-                    </div>
-                    <div class="modal-form-group">
-                        <label for="edit_location">Location <span class="req">*</span></label>
-                        <input type="text" id="edit_location" name="location"
-                               placeholder="e.g. Gaisano Mall" required>
-                    </div>
-                </div>
-
-                <div class="modal-form-group">
-                    <label for="edit_description">Description</label>
-                    <textarea id="edit_description" name="description" rows="3"
-                              placeholder="Colour, size, brand, distinguishing features…"></textarea>
-                </div>
-
-                <div class="modal-form-row three-col">
-                    <div class="modal-form-group">
-                        <label for="edit_type">Type</label>
-                        <select id="edit_type" name="type">
-                            <option value="lost">Lost</option>
-                            <option value="found">Found</option>
-                        </select>
-                    </div>
-                    <div class="modal-form-group">
-                        <label for="edit_status">Status</label>
-                        <select id="edit_status" name="status">
-                            <option value="active">Active</option>
-                            <option value="found">Found</option>
-                            <option value="resolved">Resolved</option>
-                        </select>
-                    </div>
-                    <div class="modal-form-group">
-                        <label for="edit_date">Date Lost / Found</label>
-                        <input type="date" id="edit_date" name="date_lost_found">
-                    </div>
-                </div>
-
-            </div><!-- /modal-body -->
-
-            <div class="modal-footer">
-                <button type="button" class="modal-btn-cancel" onclick="closeModal('editModal')">
-                    Cancel
-                </button>
-                <button type="submit" class="modal-btn-primary">
-                    <i class="fas fa-floppy-disk"></i> Save Changes
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
+<?php include '../admin/edit-modal.dashboard.php'?>
 
 <!-- ══════════════════════════════════════════════════════════
      DELETE MODAL
 ══════════════════════════════════════════════════════════ -->
-<div class="modal-overlay" id="deleteModal" role="dialog" aria-modal="true" aria-labelledby="deleteModalTitle">
-    <div class="modal modal-sm">
-        <div class="modal-header">
-            <h3 id="deleteModalTitle"><i class="fas fa-trash"></i> Confirm Delete</h3>
-            <button class="modal-close" onclick="closeModal('deleteModal')" aria-label="Close">
-                <i class="fas fa-xmark"></i>
-            </button>
-        </div>
-
-        <form method="POST" action="dashboard.php" id="deleteForm">
-            <input type="hidden" name="action"  value="delete">
-            <input type="hidden" name="item_id" id="delete_item_id">
-
-            <div class="modal-body">
-                <div class="delete-warning-icon">
-                    <i class="fas fa-triangle-exclamation"></i>
-                </div>
-                <p class="delete-warning">
-                    You are about to permanently delete:<br>
-                    <strong id="delete_item_name"></strong><br>
-                    <span>This will also remove the uploaded image. This cannot be undone.</span>
-                </p>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="modal-btn-cancel" onclick="closeModal('deleteModal')">
-                    Cancel
-                </button>
-                <button type="submit" class="modal-btn-danger">
-                    <i class="fas fa-trash"></i> Yes, Delete
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
+<?php include '../admin/delete-modal.dashboard.php'?>
 
 <!-- ══════════════════════════════════════════════════════════
      JAVASCRIPT
