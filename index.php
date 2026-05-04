@@ -33,9 +33,9 @@ $result = $conn->query($sql);
         </div>
 
         <div class="hero-buttons">
-            <a href="browse.php" class="btn primary">Find Lost Item</a>
+            <a href="browse.php" class="btn primary">Browse Items</a>
             <?php if (isset($_SESSION['user'])): ?>
-                <a href="report.php" class="btn secondary">Report Lost Item</a>
+                <a href="report.php" class="btn secondary">Report Item</a>
             <?php else: ?>
                 <a href="#" onclick="openModal()" class="btn secondary">Report Lost Item</a>
             <?php endif; ?>

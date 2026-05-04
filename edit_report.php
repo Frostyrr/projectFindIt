@@ -197,9 +197,8 @@ $date_value = !empty($item['date_lost_found']) ? date('Y-m-d', strtotime($item['
                 <div class="form-group">
                     <label for="status">Current Status</label>
                     <select id="status" name="status" class="form-select">
-                        <option value="active" <?= $item['status'] === 'active' ? 'selected' : '' ?>>Active (Still Searching)</option>
-                        <option value="found" <?= $item['status'] === 'found' ? 'selected' : '' ?>>Found / Resolved</option>
-                        <option value="resolved" <?= $item['status'] === 'resolved' ? 'selected' : '' ?>>Resolved (Closed)</option>
+                        <option value="active" <?= $item['status'] === 'active' ? 'selected' : '' ?>>Active</option>
+                        <option value="resolved" <?= $item['status'] === 'resolved' ? 'selected' : '' ?>>Resolved</option>
                     </select>
                 </div>
 
