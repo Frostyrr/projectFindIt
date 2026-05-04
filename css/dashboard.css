@@ -302,8 +302,8 @@ body {
 /* ── Stat cards ─────────────────────────────────────────────── */
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
     margin-bottom: 32px;
 }
 

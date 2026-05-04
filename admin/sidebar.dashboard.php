@@ -18,6 +18,10 @@
         <a href="users.php" class="sidebar-link <?= $current_page === 'users.php' ? 'active' : '' ?>">
             <i class="fas fa-users"></i> Users
         </a>
+        <a href="userfeedback.php" class="sidebar-link <?= $current_page === 'feedback.php' ? 'active' : '' ?>">
+            <i class="fas fa-comment-dots"></i> Feedbacks
+        </a>
+
         <div class="sidebar-label" style="margin-top:10px">Content</div>
         <a href="../browse.php" class="sidebar-link" target="_blank">
             <i class="fas fa-arrow-up-right-from-square"></i> View Site

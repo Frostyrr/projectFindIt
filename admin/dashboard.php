@@ -118,6 +118,9 @@ try {
 
     $r = $conn->query("SELECT COUNT(id) AS c FROM items WHERE status='found'");
     if ($r) $items_found = $r->fetch_assoc()['c'];
+    
+    $r = $conn->query("SELECT COUNT(id) AS c FROM feedback");
+    if ($r) $total_feedback = $r->fetch_assoc()['c'];
 
     $recent_reports = $conn->query("
         SELECT  i.id,
@@ -225,6 +228,14 @@ try {
                     <span class="stat-sub">All registered accounts</span>
                 </div>
                 <div class="stat-icon green"><i class="fas fa-users"></i></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-left">
+                    <span class="stat-label">Total Feedback</span>
+                    <span class="stat-value"><?= $total_feedback ?></span>
+                    <span class="stat-sub">All user submissions</span>
+                </div>
+                <div class="stat-icon amber"><i class="fas fa-comment-dots"></i></div>
             </div>
         </div>
 

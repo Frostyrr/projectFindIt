@@ -91,16 +91,16 @@
     padding: 24px 26px;
 }
 
-        .item-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            flex-direction: column;
-            transition: transform var(--transition), box-shadow var(--transition);
-        }
+.item-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
 
         .item-card:hover {
             transform: translateY(-4px);
@@ -220,37 +220,3 @@
             color: var(--ink-300);
             font-size: 14px;
         }
-
-        /* ── Pagination ── */
-        .pagination {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            padding: 20px 26px;
-            border-top: 1px solid var(--border);
-        }
-
-        .page-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 34px;
-            height: 34px;
-            padding: 0 10px;
-            border: 1.5px solid var(--border);
-            border-radius: var(--radius-sm);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 12.5px;
-            font-weight: 700;
-            color: var(--ink-600);
-            text-decoration: none;
-            background: var(--surface);
-            transition: background var(--transition), border-color var(--transition), color var(--transition);
-        }
-
-        .page-link:hover       { background: var(--green-100); border-color: var(--green-300); color: var(--green-700); }
-        .page-link.active      { background: var(--green-900); border-color: var(--green-900); color: #fff; }
-        .page-link.disabled    { opacity: .35; pointer-events: none; }
-
-        .results-summary { font-size: 12.5px; color: var(--ink-300); font-weight: 500; }

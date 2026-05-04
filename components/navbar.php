@@ -12,7 +12,7 @@
                 <?php if (isset($_SESSION['user'])): ?>
                     <li><a href="report.php">Report</a></li>
                 <?php else: ?>
-                    <li><a href="#" onclick="openModal()">Report</a></li>
+                    <li><a href="#" onclick="openLoginModal()">Report</a></li>
                 <?php endif; ?>
             </ul>
         </div>
@@ -59,7 +59,7 @@
                     </li>
                 <?php else: ?>
                     <li>
-                        <a href="#" class="nav-login-button" onclick="openModal()">Login</a>
+                        <a href="#" class="nav-login-button" onclick="openLoginModal()">Login</a>
                     </li>
                 <?php endif; ?>
             </ul>
