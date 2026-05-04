@@ -72,6 +72,11 @@ $result = $conn->query($sql);
 
     <hr class="section-divider">   
 
+    <!-- HOW IT WORKS section -->
+    <?php include 'how-it-works.php'; ?>
+
+    <hr class="section-divider">   
+
     <section class="community">
         <div class="community-card">
             <p>THE FINAL STEP</p>
@@ -95,6 +100,7 @@ $result = $conn->query($sql);
             </div>
 
             <div class="footer-links">
+                <a href="help.php">Help Center</a>
                 <a href="browse.php">Browse Items</a>
                 <a href="report.php">Report Item</a>
                 <a href="#recent-reports">Recent Reports</a>

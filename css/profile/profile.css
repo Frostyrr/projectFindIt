@@ -180,6 +180,12 @@
     font-weight: 600;
 }
 
+.first-report {
+    background: #1a3d2b;
+    color: white; 
+    width: 250px;
+}
+
 /* ── Responsive adjustments ── */
 @media (max-width: 950px) {
     .profile-reports-grid {

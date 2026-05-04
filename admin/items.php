@@ -75,6 +75,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     header("Location: items.php");
     exit();
+    // ── EDIT ─────────────────────────────────────────────────
+    if ($action === 'edit' && $item_id > 0) {
+        $item_name   = trim($_POST['item_name']    ?? '');
+        $description = trim($_POST['description']  ?? '');
+        $location    = trim($_POST['location']     ?? '');
+        $type        = in_array($_POST['type']   ?? '', ['lost','found'])              ? $_POST['type']   : 'lost';
+        $status      = in_array($_POST['status'] ?? '', ['active','recovered']) ? $_POST['status'] : 'active';
+        $date_lf     = !empty($_POST['date_lost_found']) ? $_POST['date_lost_found'] : null;
+
+        if ($item_name === '') {
+            $_SESSION['flash'] = ['type' => 'error', 'msg' => "Item name cannot be empty."];
+            header("Location: dashboard.php");
+            exit();
+        }
+
+        try {
+            $s = $conn->prepare("
+                UPDATE items
+                   SET item_name       = ?,
+                       description     = ?,
+                       location        = ?,
+                       type            = ?,
+                       status          = ?,
+                       date_lost_found = ?
+                 WHERE id = ?
+            ");
+            $s->bind_param("ssssssi",
+                $item_name, $description, $location,
+                $type, $status, $date_lf, $item_id
+            );
+            $s->execute();
+            $s->close();
+
+            $_SESSION['flash'] = ['type' => 'success', 'msg' => "Item #$item_id updated successfully."];
+        } catch (mysqli_sql_exception $e) {
+            $_SESSION['flash'] = ['type' => 'error', 'msg' => "Update failed: " . $e->getMessage()];
+        }
+
+        header("Location: dashboard.php");
+        exit();
+    }
 }
 
 // ── Get and clear the flash message ──────────────────────────

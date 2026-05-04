@@ -56,8 +56,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $item_name   = trim($_POST['item_name']    ?? '');
         $description = trim($_POST['description']  ?? '');
         $location    = trim($_POST['location']     ?? '');
-        $type        = in_array($_POST['type']   ?? '', ['lost','found'])              ? $_POST['type']   : 'lost';
-        $status      = in_array($_POST['status'] ?? '', ['active','found','resolved']) ? $_POST['status'] : 'active';
+        $type        = in_array($_POST['type']   ?? '', ['lost','found']) ? $_POST['type']   : 'lost';
+        $status_raw = trim($_POST['status'] ?? '');
+        $status = in_array($status_raw, ['active', 'claimed', 'resolved']) ? $status_raw : 'active';
         $date_lf     = !empty($_POST['date_lost_found']) ? $_POST['date_lost_found'] : null;
 
         if ($item_name === '') {
@@ -105,7 +106,7 @@ unset($_SESSION['flash']);
 // ════════════════════════════════════════════════════════════
 $total_reports = 0;
 $active_lost   = 0;
-$items_found   = 0;
+$items_claimed   = 0;
 $table_error   = null;
 $recent_reports = false;
 
@@ -121,6 +122,9 @@ try {
     
     $r = $conn->query("SELECT COUNT(id) AS c FROM feedback");
     if ($r) $total_feedback = $r->fetch_assoc()['c'];
+    
+    $r = $conn->query("SELECT COUNT(id) AS c FROM items WHERE status='claimed'");
+    if ($r) $items_claimed = $r->fetch_assoc()['c'];
 
     $recent_reports = $conn->query("
         SELECT  i.id,
@@ -215,8 +219,8 @@ try {
             </div>
             <div class="stat-card">
                 <div class="stat-card-left">
-                    <span class="stat-label">Items Found</span>
-                    <span class="stat-value"><?= $items_found ?></span>
+                    <span class="stat-label">Claimed Items</span>
+                    <span class="stat-value"><?= $items_claimed ?></span>
                     <span class="stat-sub">Successfully recovered</span>
                 </div>
                 <div class="stat-icon amber"><i class="fas fa-circle-check"></i></div>

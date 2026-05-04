@@ -475,11 +475,30 @@ body {
     text-transform: uppercase;
 }
 
-.badge.lost     { background: var(--red-100);   color: var(--red-500);   }
-.badge.found    { background: var(--green-100);  color: var(--green-700); }
-.badge.active   { background: var(--green-100);  color: var(--green-700); }
-.badge.resolved { background: var(--ink-100);    color: var(--ink-300);   }
-.badge.claimed  { background: var(--blue-100);   color: var(--blue-500);  }
+.badge.lost     {
+    background: var(--red-100);   
+    color: var(--red-500);   
+}
+
+.badge.found    { 
+    background: var(--green-100);  
+    color: var(--green-700); 
+}
+
+.badge.active   { 
+    background: var(--green-100);  
+    color: var(--green-700); 
+}
+
+.badge.resolved { 
+    background: rgba(255, 234, 48, 0.14);
+    color: rgb(255, 200, 0); 
+}
+
+.badge.claimed  { 
+    background: var(--blue-100);   
+    color: var(--blue-500);  
+}
 
 /* Action button */
 .btn-action {

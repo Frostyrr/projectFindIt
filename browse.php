@@ -74,7 +74,7 @@ function typeLink($type, $search, $date) {
     <div class="browse-container">
 
         <div class="search-section">
-            <h2>Browse Reported Items</h2>
+            <h2>Browse Items</h2>
             <form method="GET" action="browse.php" class="search-filter-form">
 
                 <div class="search-box">
