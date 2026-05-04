@@ -1,3 +1,9 @@
+/* ============================================================
+   FindIt — Browse Page  |  browse.css
+   Aesthetic: Clean community-board meets modern card UI
+   Typefaces: Plus Jakarta Sans (headings) + DM Sans (body)
+   ============================================================ */
+
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
 /* ── Root tokens ────────────────────────────────────────────── */
@@ -122,8 +128,8 @@
 /* ── Cards grid ─────────────────────────────────────────────── */
 .reports-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 16px;
 }
 
 /* ── Individual card ────────────────────────────────────────── */
@@ -148,7 +154,7 @@
 .card-image-container {
     position: relative;
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 2;
     overflow: hidden;
     background: var(--ink-100);
 }
@@ -181,26 +187,26 @@
 /* ── Badges ─────────────────────────────────────────────────── */
 .card-badges {
     position: absolute;
-    top: 12px;
-    left: 12px;
+    top: 8px;
+    left: 8px;
     display: flex;
-    gap: 6px;
+    gap: 5px;
     flex-wrap: wrap;
 }
 
 .badge {
     display: inline-flex;
     align-items: center;
-    padding: 4px 11px;
+    padding: 3px 8px;
     border-radius: 100px;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.6px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
     color: #fff;
     backdrop-filter: blur(4px);
-    box-shadow: 0 2px 8px rgba(0,0,0,.18);
+    box-shadow: 0 2px 6px rgba(0,0,0,.16);
 }
 
 .badge.lost   { background: var(--red-500); }
@@ -211,19 +217,18 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding: 18px 20px 16px;
-    padding: 10px 15px 8px;
-    gap: 6px;
+    padding: 11px 13px 9px;
+    gap: 3px;
 }
 
 .card-meta {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 }
 
 .meta-item {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
     color: var(--ink-300);
     letter-spacing: 0.2px;
@@ -231,7 +236,7 @@
 
 .card-title {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 700;
     color: var(--ink-900);
     margin: 0;
@@ -243,10 +248,10 @@
 }
 
 .card-desc {
-    font-size: 13px;
+    font-size: 11.5px;
     font-weight: 400;
     color: var(--ink-600);
-    line-height: 1.6;
+    line-height: 1.5;
     margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -258,7 +263,7 @@
 .card-divider {
     border: none;
     border-top: 1px solid var(--border);
-    margin: 10px 0 6px;
+    margin: 7px 0 4px;
 }
 
 /* ── Card footer ────────────────────────────────────────────── */
@@ -266,12 +271,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
+    gap: 6px;
     flex-wrap: wrap;
 }
 
 .card-location {
-    font-size: 12.5px;
+    font-size: 11px;
     font-weight: 500;
     color: var(--ink-300);
     white-space: nowrap;
@@ -284,17 +289,17 @@
 .view-details-btn {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    padding: 7px 14px;
+    gap: 4px;
+    padding: 5px 10px;
     background: var(--green-900);
     color: #fff;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.8px;
+    letter-spacing: 0.7px;
     text-transform: uppercase;
     text-decoration: none;
-    border-radius: var(--radius-sm);
+    border-radius: 6px;
     transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
     white-space: nowrap;
     flex-shrink: 0;
