@@ -1,0 +1,124 @@
+/* ============================================================
+   FindIt — Subtle Scroll Animations
+   Aesthetic: Understated, professional, user-friendly
+   ============================================================ */
+
+/* ── Fade Up (default for most sections) ────────────────────── */
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out,
+                transform 0.6s ease-out;
+}
+
+.fade-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Hero text staggered reveal ────────────────────────────── */
+.hero-text h2 {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s ease-out 0.1s,
+                transform 0.5s ease-out 0.1s;
+}
+
+.hero-text.is-visible h2 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-text h1 {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s ease-out 0.25s,
+                transform 0.5s ease-out 0.25s;
+}
+
+.hero-text.is-visible h1 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-text p {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s ease-out 0.4s,
+                transform 0.5s ease-out 0.4s;
+}
+
+.hero-text.is-visible p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Hero buttons ──────────────────────────────────────────── */
+.hero-buttons .btn {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease-out 0.55s,
+                transform 0.4s ease-out 0.55s;
+}
+
+.hero-buttons.is-visible .btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Scroll cue ────────────────────────────────────────────── */
+.hero-scroll-cue {
+    opacity: 0;
+    transition: opacity 0.5s ease-out 0.8s;
+}
+
+.hero-scroll-cue.is-visible {
+    opacity: 1;
+}
+
+.hero-scroll-cue svg {
+    animation: gentleBounce 2s ease-in-out infinite;
+}
+
+@keyframes gentleBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+}
+
+/* ── Cards stagger (recent reports) ────────────────────────── */
+.stagger-cards .report-card {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.4s ease-out,
+                transform 0.4s ease-out;
+}
+
+.stagger-cards.is-visible .report-card:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: translateY(0); }
+.stagger-cards.is-visible .report-card:nth-child(2) { transition-delay: 0.12s; opacity: 1; transform: translateY(0); }
+.stagger-cards.is-visible .report-card:nth-child(3) { transition-delay: 0.19s; opacity: 1; transform: translateY(0); }
+
+/* ── Navbar hide/show on scroll ────────────────────────────── */
+.navbar {
+    transition: transform 0.3s ease-out;
+}
+
+.navbar.nav-hidden {
+    transform: translateY(-100%);
+}
+
+/* ── Reduced motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .fade-up,
+    .hero-text h2,
+    .hero-text h1,
+    .hero-text p,
+    .hero-buttons .btn,
+    .hero-scroll-cue,
+    .stagger-cards .report-card,
+    .navbar {
+        transition: none !important;
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}

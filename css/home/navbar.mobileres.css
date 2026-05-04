@@ -1,0 +1,219 @@
+/* ============================================================
+   Navbar — Mobile Responsive
+   ============================================================ */
+
+/* ── Hamburger Button ──────────────────────────────────────── */
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    z-index: 1001;
+}
+
+.hamburger-line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ink-900);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.nav-hamburger.active .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-hamburger.active .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile Overlay ────────────────────────────────────────── */
+.nav-mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.nav-mobile-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ── Mobile Menu Panel ─────────────────────────────────────── */
+.nav-mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    max-width: 85vw;
+    height: 100%;
+    background: var(--surface);
+    box-shadow: -4px 0 30px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+    padding: 24px;
+    padding-top: 88px;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    flex-direction: column;
+}
+
+.nav-mobile-menu.active {
+    right: 0;
+}
+
+.nav-mobile-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-mobile-links a {
+    display: block;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink-900);
+    border-radius: var(--radius-sm);
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-mobile-links a:hover {
+    background: var(--ink-100);
+    color: var(--green-500);
+}
+
+.nav-mobile-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 16px 0;
+}
+
+.nav-mobile-login {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px 20px;
+    background: var(--green-900);
+    color: #fff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.25s ease;
+}
+
+.nav-mobile-login:hover {
+    background: var(--green-700);
+}
+
+/* ── Mobile Breakpoint ─────────────────────────────────────── */
+@media (max-width: 768px) {
+    .nav-container {
+        height: 60px;
+        padding: 0 16px;
+    }
+
+    .nav-brand {
+        font-size: 18px;
+    }
+
+    .nav-brand img {
+        height: 20px;
+    }
+
+    /* Hide desktop links */
+    .nav-links,
+    .nav-center {
+        display: none;
+    }
+
+    /* Hide desktop login button */
+    .nav-login-button {
+        display: none;
+    }
+
+    /* Show hamburger */
+    .nav-hamburger {
+        display: flex;
+    }
+
+    /* Show mobile menu and overlay */
+    .nav-mobile-menu {
+        display: flex;
+    }
+
+    .nav-mobile-overlay {
+        display: block;
+    }
+
+    /* Desktop dropdown fallback on mobile */
+    .nav-dropdown {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        height: 56px;
+        padding: 0 12px;
+    }
+
+    .nav-brand {
+        font-size: 16px;
+        gap: 6px;
+    }
+
+    .nav-brand img {
+        height: 18px;
+    }
+
+    .nav-mobile-menu {
+        width: 100%;
+        max-width: 100%;
+        padding: 16px;
+        padding-top: 72px;
+    }
+
+    .nav-mobile-links a {
+        padding: 12px 14px;
+        font-size: 15px;
+    }
+}
+
+/* ── Reduced Motion ────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .nav-mobile-menu,
+    .nav-mobile-overlay,
+    .hamburger-line {
+        transition: none !important;
+    }
+}

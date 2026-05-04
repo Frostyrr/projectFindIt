@@ -32,45 +32,6 @@
     animation: fadeInDown 0.8s ease forwards;
 }
 
-/* ====== HERO TEXT ANIMATION ====== */
-.hero-text h1 {
-    margin-top: -20px;
-    font-size: 82px;
-    font-weight: bold;
-
-    opacity: 0;
-    animation: fadeInUp 0.8s ease forwards;
-    animation-delay: 0.3s;
-}
-
-.hero-text h2 {
-    font-size: 36px;
-    color: #333333;
-
-    opacity: 0;
-    animation: fadeInUp 0.8s ease forwards;
-    animation-delay: 0.5s;
-}
-
-.hero-text p {
-    margin-top: 10px;
-    color: #333333;
-
-    opacity: 0;
-    animation: fadeInUp 0.8s ease forwards;
-    animation-delay: 0.7s;
-}
-
-.hero-buttons {
-    margin-top: 30px;
-    display: flex;
-    gap: 10px;
-
-    opacity: 0;
-    animation: fadeInUp 0.8s ease forwards;
-    animation-delay: 0.9s;
-}
-
 /* ====== BUTTON HOVER IMPROVEMENT ====== */
 .btn {
     padding: 10px;

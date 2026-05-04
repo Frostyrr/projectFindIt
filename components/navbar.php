@@ -63,7 +63,35 @@
                         <a href="#" class="nav-login-button" onclick="openLoginModal()">Login</a>
                     </li>
                 <?php endif; ?>
+                    <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
             </ul>
         </div>
     </div>
 </nav>
+
+<div class="nav-mobile-overlay" aria-hidden="true"></div>
+
+<div class="nav-mobile-menu" aria-label="Mobile navigation" role="dialog" aria-modal="true">
+    <ul class="nav-mobile-links">
+        <li><a href="index.php">Home</a></li>
+        <li><a href="browse.php">Browse Items</a></li>
+        <li><a href="help.php">Help Center</a></li>
+        <?php if (isset($_SESSION['user'])): ?>
+            <li><a href="report.php">Report Item</a></li>
+            <li><a href="profile.php">Profile</a></li>
+            <li><a href="my-reports.php">My Reports</a></li>
+        <?php endif; ?>
+    </ul>
+
+    <hr class="nav-mobile-divider">
+
+    <?php if (isset($_SESSION['user'])): ?>
+        <a href="logout.php" class="nav-mobile-login" style="background: #c0392b;">Log Out</a>
+    <?php else: ?>
+        <a href="#" onclick="openLoginModal()" class="nav-mobile-login">Log In / Sign Up</a>
+    <?php endif; ?>
+</div>

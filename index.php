@@ -41,7 +41,6 @@ $result = $conn->query($sql);
             <?php endif; ?>
         </div>
 
-        <!-- scroll cue -->
         <a href="#recent-reports" class="hero-scroll-cue">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none"
                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -53,8 +52,8 @@ $result = $conn->query($sql);
 
     </div>
 
-    <!-- Recent reports -->
-    <section class="recent-reports-section" id="recent-reports">
+    <!-- Recent Reports -->
+    <section class="recent-reports-section fade-up" id="recent-reports">
         <div class="reports-container">
 
             <div class="reports-header">
@@ -72,12 +71,15 @@ $result = $conn->query($sql);
 
     <hr class="section-divider">   
 
-    <!-- HOW IT WORKS section -->
-    <?php include 'how-it-works.php'; ?>
+    <!-- How It Works -->
+    <section class="fade-up">
+        <?php include 'how-it-works.php'; ?>
+    </section>
 
     <hr class="section-divider">   
 
-    <section class="community">
+    <!-- Community -->
+    <section class="community fade-up">
         <div class="community-card">
             <p>THE FINAL STEP</p>
             <hr class="divider">
@@ -91,7 +93,7 @@ $result = $conn->query($sql);
         </div>
     </section>
 
-    <footer class="footer">
+    <footer class="footer fade-up">
         <div class="footer-container">
 
             <div class="footer-brand">
@@ -116,13 +118,8 @@ $result = $conn->query($sql);
     <script src="js/loginModal.js"></script>
     <script src="js/goToDetail.js"></script>
     <script src="js/DropDown.js"></script>
-    <script>
-        // Add .scrolled class to navbar on scroll for elevated shadow
-        const navbar = document.querySelector('.navbar');
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 10);
-        });
-    </script>
+    <script src="js/ScrollAnimations.js"></script>
+    <script src="js/navbar.js"></script>
 
 </body>
 </html>
