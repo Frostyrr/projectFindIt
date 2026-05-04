@@ -37,7 +37,7 @@ $result = $conn->query($sql);
             <?php if (isset($_SESSION['user'])): ?>
                 <a href="report.php" class="btn secondary">Report Item</a>
             <?php else: ?>
-                <a href="#" onclick="openModal()" class="btn secondary">Report Lost Item</a>
+                <a href="#" onclick="openLoginModal()" class="btn secondary">Report Lost Item</a>
             <?php endif; ?>
         </div>
 
@@ -81,7 +81,7 @@ $result = $conn->query($sql);
             <?php if (isset($_SESSION['user'])): ?>
                 <a href="report.php" class="btn secondary">Report Lost Item</a>
             <?php else: ?>
-                <a href="#" onclick="openModal()" class="btn secondary">Report Lost Item</a>
+                <a href="#" onclick="openLoginModal()" class="btn secondary">Report Lost Item</a>
             <?php endif; ?>
         </div>
     </section>
