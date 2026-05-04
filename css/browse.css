@@ -6,6 +6,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
+
 /* ── Root tokens ────────────────────────────────────────────── */
 :root {
     --green-900: #1a3d2b;
@@ -124,6 +125,33 @@
 .search-icon-btn svg {
     pointer-events: none;
 }
+
+/* ── Type filter buttons ────────────────────────────────────── */
+.type-filter-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    justify-content: center;
+}
+
+.type-btn {
+    padding: 8px 24px;
+    border-radius: 100px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    border: 1.5px solid var(--border);
+    color: var(--ink-600);
+    background: var(--surface);
+    transition: all var(--transition);
+}
+
+.type-btn:hover        { border-color: var(--ink-300); color: var(--ink-900); background: var(--ink-100); }
+.type-btn.active       { border-color: var(--ink-900); background: var(--ink-900); color: #fff; }
+.type-btn.lost.active  { border-color: var(--red-500); background: var(--red-500); color: #fff; }
+.type-btn.found.active { border-color: var(--green-500); background: var(--green-500); color: #fff; }
 
 /* ── Cards grid ─────────────────────────────────────────────── */
 .reports-grid {
@@ -370,6 +398,10 @@
 
     .card-content {
         padding: 14px 15px 12px;
+    }
+
+    .type-filter-buttons {
+        flex-wrap: wrap;
     }
 }
 
