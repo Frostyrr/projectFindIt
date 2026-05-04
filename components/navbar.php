@@ -44,6 +44,12 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="feedback.php">
+                                    <span class = "material-symbols-outlined">feedback</span>
+                                    Feedback
+                                </a>
+                            </li>
+                            <li>
                                 <a href="auth/logout.php">
                                     <span class="material-symbols-outlined">logout</span>
                                     Logout

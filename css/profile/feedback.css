@@ -1,0 +1,85 @@
+/* ── Star Rating ── */
+.star-rating {
+    display: flex;
+    gap: 6px;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 28px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.15s ease;
+    line-height: 1;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input:checked ~ label {
+    color: #f5a623;
+}
+
+/* ── Success Banner ── */
+.alert-success {
+    background: #eafaf1;
+    border: 1px solid #a9dfbf;
+    color: #1e8449;
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.alert-success .material-symbols-outlined {
+    font-size: 20px;
+}
+
+/* ── Category Select ── */
+.form-select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23666' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    cursor: pointer;
+    color: #333;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+}
+
+/* ── Rating Label ── */
+.rating-hint {
+    font-size: 12px;
+    color: #999;
+    margin-top: 6px;
+}
+
+/* ── Character Counter ── */
+.char-counter {
+    font-size: 12px;
+    color: #999;
+    text-align: right;
+    margin-top: 4px;
+}
+
+.char-counter.warn {
+    color: #e67e22;
+}
