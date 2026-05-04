@@ -132,18 +132,9 @@ try {
         FROM    items i
         LEFT JOIN users u ON i.user_email = u.email
         ORDER BY i.created_at DESC
-        LIMIT 20
+        LIMIT 10
     ");
 
-} catch (mysqli_sql_exception $e) {
-    $table_error = $e->getMessage();
-}
-
-$totalUsers  = 0;
-
-try {
-    $result     = $conn->query("SELECT * FROM users ORDER BY id DESC");
-    $totalUsers = $result->num_rows;
 } catch (mysqli_sql_exception $e) {
     $table_error = $e->getMessage();
 }
@@ -156,6 +147,7 @@ try {
     <title>Admin Dashboard — FindIt</title>
     <link rel="icon" type="image/x-icon" href="../images/findIconWithBG.png">
     <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/pagination.dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -192,45 +184,96 @@ try {
             </div>
         <?php endif; ?>
 
-        <!-- Stat cards -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-card-left">
-                    <span class="stat-label">Total Reports</span>
-                    <span class="stat-value"><?= $total_reports ?></span>
-                    <span class="stat-sub">All time submissions</span>
-                </div>
-                <div class="stat-icon green"><i class="fas fa-layer-group"></i></div>
+        <!-- Table card -->
+        <div class="table-card">
+            <div class="table-card-header">
+                <h2>List of items</h2>
             </div>
-            <div class="stat-card">
-                <div class="stat-card-left">
-                    <span class="stat-label">Active Lost Items</span>
-                    <span class="stat-value"><?= $active_lost ?></span>
-                    <span class="stat-sub">Awaiting recovery</span>
+
+            <?php if ($table_error): ?>
+                <div class="alert alert-error" style="margin:18px 26px 0">
+                    <i class="fas fa-circle-exclamation"></i>
+                    <strong>Database error:</strong> <?= htmlspecialchars($table_error) ?>
                 </div>
-                <div class="stat-icon red"><i class="fas fa-triangle-exclamation"></i></div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-card-left">
-                    <span class="stat-label">Items Found</span>
-                    <span class="stat-value"><?= $items_found ?></span>
-                    <span class="stat-sub">Successfully recovered</span>
-                </div>
-                <div class="stat-icon amber"><i class="fas fa-circle-check"></i></div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-card-left">
-                    <span class="stat-label">Total Users</span>
-                    <span class="stat-value"><?= $totalUsers ?></span>
-                    <span class="stat-sub">All registered accounts</span>
-                </div>
-                <div class="stat-icon green"><i class="fas fa-users"></i></div>
+            <?php endif; ?>
+
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Item Name</th>
+                            <th>Reported By</th>
+                            <th>Location</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if ($recent_reports && $recent_reports->num_rows > 0): ?>
+                            <?php while ($row = $recent_reports->fetch_assoc()): ?>
+                            <tr id="row-<?= $row['id'] ?>">
+                                <td><span class="item-id">#<?= $row['id'] ?></span></td>
+                                <td class="td-item-name"><?= htmlspecialchars($row['item_name']) ?></td>
+                                <td><?= htmlspecialchars($row['reporter_name'] ?? 'Unknown') ?></td>
+                                <td><?= htmlspecialchars($row['location']) ?></td>
+                                <td>
+                                    <span class="badge <?= strtolower($row['type']) ?>">
+                                        <?= ucfirst($row['type']) ?>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge <?= strtolower($row['status']) ?>">
+                                        <?= ucfirst($row['status']) ?>
+                                    </span>
+                                </td>
+                                <td><?= date('M d, Y', strtotime($row['created_at'])) ?></td>
+                                <td>
+                                    <div class="action-group">
+                                        <!-- View -->
+                                        <a href="../item_details.php?id=<?= $row['id'] ?>"
+                                           class="btn-action" title="View item">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+
+                                        <!-- Edit — passes row data as JSON attributes -->
+                                        <button type="button"
+                                                class="btn-action btn-edit"
+                                                title="Edit item"
+                                                data-id="<?= $row['id'] ?>"
+                                                data-name="<?= htmlspecialchars($row['item_name'], ENT_QUOTES) ?>"
+                                                data-desc="<?= htmlspecialchars($row['description'] ?? '', ENT_QUOTES) ?>"
+                                                data-location="<?= htmlspecialchars($row['location'], ENT_QUOTES) ?>"
+                                                data-type="<?= $row['type'] ?>"
+                                                data-status="<?= $row['status'] ?>"
+                                                data-date="<?= $row['date_lost_found'] ?? '' ?>"
+                                                onclick="openEdit(this)">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
+                                        <!-- Delete -->
+                                        <button type="button"
+                                                class="btn-action btn-delete"
+                                                title="Delete item"
+                                                data-id="<?= $row['id'] ?>"
+                                                data-name="<?= htmlspecialchars($row['item_name'], ENT_QUOTES) ?>"
+                                                onclick="openDelete(this)">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php endwhile; ?>
+                        <?php else: ?>
+                            <tr><td colspan="8" class="td-empty">No submissions found.</td></tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <!-- Table card -->
-        <?php include '../admin/recent-reports.table.php'?>
-        <!-- Table card END -->
     </div>
 </div>
 

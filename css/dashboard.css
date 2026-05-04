@@ -302,7 +302,7 @@ body {
 /* ── Stat cards ─────────────────────────────────────────────── */
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 18px;
     margin-bottom: 32px;
 }
@@ -328,7 +328,7 @@ body {
 .stat-card-left {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 16px;
 }
 
 .stat-label {

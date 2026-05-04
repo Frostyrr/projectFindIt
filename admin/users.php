@@ -147,19 +147,7 @@ try {
                 <button class="alert-close" onclick="this.parentElement.remove()">×</button>
             </div>
         <?php endif; ?>
-
-        <!-- Stat cards -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-card-left">
-                    <span class="stat-label">Total Users</span>
-                    <span class="stat-value"><?= $totalUsers ?></span>
-                    <span class="stat-sub">All registered accounts</span>
-                </div>
-                <div class="stat-icon green"><i class="fas fa-users"></i></div>
-            </div>
-        </div>
-
+        
         <!-- Table card -->
         <div class="table-card">
             <div class="table-card-header">
