@@ -44,7 +44,7 @@
                         <label for="edit_status">Status</label>
                         <select id="edit_status" name="status">
                             <option value="active">Active</option>
-                            <option value="found">Found</option>
+                            <option value="claimed">Claimed</option>
                             <option value="resolved">Resolved</option>
                         </select>
                     </div>

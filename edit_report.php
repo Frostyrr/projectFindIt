@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($location)) $errors[] = "Location is required.";
     if (empty($date_found)) $errors[] = "Date is required.";
     if (!in_array($type, ['lost', 'found'])) $type = $item['type']; // Keep original if invalid
-    if (!in_array($status, ['active', 'found', 'resolved'])) $status = $item['status']; // Keep original if invalid
+    if (!in_array($status, ['active', 'claimed', 'resolved'])) $status = $item['status']; // Keep original if invalid
     
     $image_path = $item['image_path']; // Default to keeping the old image
 
@@ -198,6 +198,7 @@ $date_value = !empty($item['date_lost_found']) ? date('Y-m-d', strtotime($item['
                     <label for="status">Current Status</label>
                     <select id="status" name="status" class="form-select">
                         <option value="active" <?= $item['status'] === 'active' ? 'selected' : '' ?>>Active</option>
+                        <option value="claimed" <?= $item['status'] === 'claimed' ? 'selected' : '' ?>>Claimed</option>
                         <option value="resolved" <?= $item['status'] === 'resolved' ? 'selected' : '' ?>>Resolved</option>
                     </select>
                 </div>

@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $description = trim($_POST['description']  ?? '');
         $location    = trim($_POST['location']     ?? '');
         $type        = in_array($_POST['type']   ?? '', ['lost','found'])              ? $_POST['type']   : 'lost';
-        $status      = in_array($_POST['status'] ?? '', ['active','found','resolved']) ? $_POST['status'] : 'active';
+        $status      = in_array($_POST['status'] ?? '', ['active','recovered']) ? $_POST['status'] : 'active';
         $date_lf     = !empty($_POST['date_lost_found']) ? $_POST['date_lost_found'] : null;
 
         if ($item_name === '') {
