@@ -9,12 +9,17 @@ if (!isset($_SESSION['user'])) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_email = $_SESSION['user']['email'];
-    $type = 'lost';
+    $type = $_POST['type']; // Now getting type from form
     $item_name = $_POST['item_name'];
     $description = $_POST['description'];
     $location = $_POST['location'];
     $date_found = $_POST['date_found'];
     $contact_info = $_POST['contact_info'];
+    
+    // Validate type
+    if (!in_array($type, ['lost', 'found'])) {
+        $type = 'lost'; // Default to lost if invalid
+    }
     
     $image_path = null;
     if (isset($_FILES['item_image']) && $_FILES['item_image']['error'] === UPLOAD_ERR_OK) {
@@ -32,7 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssssssss", $user_email, $type, $item_name, $description, $location, $date_found, $image_path, $contact_info);
     
     if ($stmt->execute()) {
-        header("Location: browse.php?msg=lost_reported");
+        $redirect_msg = $type === 'lost' ? 'lost_reported' : 'found_reported';
+        header("Location: browse.php?msg=$redirect_msg");
         exit();
     }
 }
@@ -42,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report Lost Item - FindIt</title>
+    <title>Report Item - FindIt</title>
     <link rel="icon" type="image/x-icon" href="images/findIconWithBG.png">
     <link rel="stylesheet" href="css/home/main.css">
     <link rel="stylesheet" href="css/auth.css">
@@ -56,11 +62,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="form-container">
         <div class="form-card">
 
-            <h2>Report a Lost Item</h2>
+            <h2>Report an Item</h2>
             <p class="form-subtitle">Fill in the details below to help others identify the item.</p>
             <hr class="form-divider">
 
             <form action="" method="POST" enctype="multipart/form-data">
+
+                <!-- Type Selection -->
+                <div class="form-group">
+                    <label>Report Type</label>
+                    <div class="type-selector">
+                        <label class="type-option">
+                            <input type="radio" name="type" value="lost" checked>
+                            <span class="type-label lost">
+                                <span class="material-symbols-outlined">search</span>
+                                Lost Item
+                            </span>
+                        </label>
+                        <label class="type-option">
+                            <input type="radio" name="type" value="found">
+                            <span class="type-label found">
+                                <span class="material-symbols-outlined">check_circle</span>
+                                Found Item
+                            </span>
+                        </label>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label for="item_name">Item Name</label>
@@ -74,11 +101,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="location">LOCATION FOUND</label>
+                        <label for="location" id="location-label">Location Lost</label>
                         <input type="text" id="location" name="location" placeholder="e.g. CSUCC Athenaeum" required>
                     </div>
                     <div class="form-group">
-                        <label for="date_found">Date Found</label>
+                        <label for="date_found" id="date-label">Date Lost</label>
                         <input type="date" id="date_found" name="date_found" required>
                     </div>
                 </div>
@@ -109,6 +136,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
         </div>
     </div>
+
+    <script>
+        // Update labels based on type selection
+        document.querySelectorAll('input[name="type"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const type = this.value;
+                document.getElementById('location-label').textContent = 
+                    type === 'lost' ? 'Location Lost' : 'Location Found';
+                document.getElementById('date-label').textContent = 
+                    type === 'lost' ? 'Date Lost' : 'Date Found';
+                document.querySelector('.form-card h2').textContent = 
+                    type === 'lost' ? 'Report a Lost Item' : 'Report a Found Item';
+                document.querySelector('.form-subtitle').textContent = 
+                    type === 'lost' ? 'Fill in the details below to help others identify what you lost.' : 
+                    'Fill in the details below to help the owner find their item.';
+            });
+        });
+    </script>
 
     <script src="js/loginModal.js"></script>
     <script src="js/fileUpload.js"></script>
