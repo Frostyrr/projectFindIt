@@ -1,20 +1,23 @@
-/* Navbar */
+/* ── Navbar shell ───────────────────────────────────────────── */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .navbar.scrolled {
     box-shadow: var(--shadow-md);
+    background: rgba(255, 255, 255, 0.96);
 }
 
+/* ── Container ──────────────────────────────────────────────── */
 .nav-container {
     max-width: 1240px;
     margin: 0 auto;
@@ -26,7 +29,7 @@
     align-items: center;
 }
 
-/* Brand */
+/* ── Brand ──────────────────────────────────────────────────── */
 .nav-brand {
     display: flex;
     align-items: center;
@@ -37,6 +40,8 @@
     letter-spacing: -0.3px;
     text-decoration: none;
     color: var(--ink-900);
+    flex-shrink: 0;
+    z-index: 2; /* stays above overlay */
 }
 
 .nav-brand img {
@@ -44,12 +49,14 @@
     width: auto;
 }
 
-/* Links */
+/* ── Desktop nav links ──────────────────────────────────────── */
 .nav-links {
     display: flex;
     list-style: none;
     gap: 32px;
     align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links a {
@@ -58,13 +65,15 @@
     font-size: 15px;
     font-weight: 500;
     color: var(--ink-600);
-    transition: color var(--transition);
+    transition: color 0.2s ease;
+    white-space: nowrap;
 }
 
-.nav-links a:hover {
-    color: var(--green-500);
-}
+.nav-links a:hover { color: var(--green-500); }
 
+.nav-links a.active { color: var(--green-700); font-weight: 600; }
+
+/* ── Centred link cluster ───────────────────────────────────── */
 .nav-center {
     display: flex;
     justify-content: center;
@@ -74,8 +83,19 @@
     transform: translateX(-50%);
 }
 
+/* ── Right side ─────────────────────────────────────────────── */
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right .nav-links {
+    gap: 16px;
+}
+
+/* ── Login button ───────────────────────────────────────────── */
 .nav-login-button {
-    color: #ffffff !important;
+    color: #fff !important;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -89,22 +109,388 @@
     border-radius: var(--radius-sm);
     border: none;
     cursor: pointer;
-    width: 100px;
     background: var(--green-900);
-    gap: 6px;
-}
-
-.nav-login-button::after {
-    display: none;
+    transition: background 0.22s ease, box-shadow 0.22s ease, transform 0.15s ease;
+    white-space: nowrap;
 }
 
 .nav-login-button:hover {
     background: var(--green-700);
     box-shadow: 0 6px 20px rgba(26,61,43,.28);
+    transform: translateY(-1px);
+}
+
+.nav-login-button:active {
+    transform: translateY(0);
+}
+
+/* ── Profile dropdown ───────────────────────────────────────── */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 4px 4px 4px 8px;
+    border-radius: 100px;
+    border: 1.5px solid transparent;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.dropdown-toggle:hover {
+    border-color: var(--border);
+    background: var(--ink-100);
+}
+
+.profile-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-900);
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.profile-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    min-width: 190px;
+    padding: 6px;
+    list-style: none;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px) scale(0.97);
+    transform-origin: top right;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 200;
+}
+
+.dropdown-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.dropdown-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-600);
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-menu li a:hover {
+    background: var(--ink-100);
+    color: var(--ink-900);
+}
+
+.dropdown-menu li a .material-symbols-outlined {
+    font-size: 18px;
+    color: var(--ink-300);
+    flex-shrink: 0;
+    transition: color 0.15s ease;
+}
+
+.dropdown-menu li a:hover .material-symbols-outlined {
+    color: var(--green-500);
 }
 
 .dropdown-divider {
+    border: none;
     border-top: 1px solid var(--border);
     margin: 4px 0;
     pointer-events: none;
+}
+
+/* ── Hamburger button ───────────────────────────────────────── */
+.nav-hamburger {
+    display: none; /* hidden on desktop */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    gap: 5px;
+    padding: 0;
+    flex-shrink: 0;
+    z-index: 1100; /* above mobile menu overlay */
+    transition: background 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nav-hamburger:hover { background: var(--ink-100); }
+
+.hamburger-line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ink-900);
+    border-radius: 2px;
+    transform-origin: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity  0.2s ease,
+                width    0.3s ease;
+}
+
+/* X state when menu is open */
+.nav-hamburger.open .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger.open .hamburger-line:nth-child(2) {
+    opacity: 0;
+    width: 0;
+}
+.nav-hamburger.open .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile overlay ─────────────────────────────────────────── */
+.nav-mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1050;
+    background: rgba(17, 23, 20, 0);
+    transition: background 0.35s ease;
+    pointer-events: none;
+}
+
+.nav-mobile-overlay.active {
+    background: rgba(17, 23, 20, 0.45);
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+/* ── Mobile drawer ──────────────────────────────────────────── */
+.nav-mobile-menu {
+    /* display:none on desktop — switched to flex inside the mobile media query */
+    display: none;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(300px, 82vw);
+    background: var(--surface);
+    z-index: 1200;
+    padding: 0;
+    box-shadow: -8px 0 40px rgba(17,23,20,.18);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    flex-direction: column;
+}
+
+.nav-mobile-menu.open {
+    transform: translateX(0);
+}
+
+/* Drawer top — logo + close affordance area */
+.nav-mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 68px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
+.nav-mobile-brand {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--ink-900);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-mobile-brand img {
+    height: 20px;
+}
+
+/* ── Mobile nav links ───────────────────────────────────────── */
+.nav-mobile-links {
+    list-style: none;
+    margin: 0;
+    padding: 12px 0;
+    flex: 1;
+}
+
+.nav-mobile-links li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink-600);
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease, padding-left 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nav-mobile-links li a:hover,
+.nav-mobile-links li a:active {
+    background: var(--ink-100);
+    color: var(--ink-900);
+    padding-left: 28px;
+}
+
+.nav-mobile-links li a .material-symbols-outlined {
+    font-size: 20px;
+    color: var(--ink-300);
+    flex-shrink: 0;
+}
+
+/* ── Mobile divider ─────────────────────────────────────────── */
+.nav-mobile-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 4px 20px;
+}
+
+/* ── Mobile CTA (login / logout) ───────────────────────────── */
+.nav-mobile-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 12px 20px 20px;
+    padding: 14px 20px;
+    border-radius: var(--radius-md);
+    background: var(--green-900);
+    color: #fff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    transition: background 0.2s ease, transform 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+    /* safe-area padding for home-indicator phones */
+    margin-bottom: max(20px, env(safe-area-inset-bottom));
+}
+
+.nav-mobile-login:active {
+    transform: scale(0.97);
+}
+
+/* Safe area padding at bottom of drawer */
+@supports (padding: env(safe-area-inset-bottom)) {
+    .nav-mobile-menu {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — TABLET / MOBILE  (max 900px)
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+    /* Hide the centred desktop links */
+    .nav-center { display: none; }
+}
+
+@media (max-width: 768px) {
+
+    /* Shorter navbar on mobile — keeps sticky filter at correct offset */
+    .nav-container {
+        height: 60px;
+        padding: 0 16px;
+    }
+
+    /* Brand slightly smaller */
+    .nav-brand {
+        font-size: 18px;
+        gap: 7px;
+    }
+
+    .nav-brand img { height: 20px; }
+
+    /* Hide desktop profile name + login button */
+    .nav-right .nav-links {
+        gap: 4px;
+    }
+
+    .profile-name  { display: none; }
+
+    /* Hide desktop login button text; keep avatar */
+    .nav-login-button {
+        /* collapse to a compact icon button */
+        padding: 8px 14px;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+
+    /* Show hamburger */
+    .nav-hamburger { display: flex; }
+
+    /* Show overlay layer (hidden initially, activated by JS) */
+    .nav-mobile-overlay { display: block; }
+
+    /* Drawer is off-screen until JS adds .open */
+    .nav-mobile-menu { display: flex; pointer-events: none; }
+    .nav-mobile-menu.open { pointer-events: auto; }
+}
+
+@media (max-width: 480px) {
+    /* On very small screens, also hide the login button — the drawer handles it */
+    .nav-login-button { display: none; }
+
+    /* Tighten profile avatar touch area */
+    .dropdown-toggle {
+        padding: 4px;
+        border-radius: 50%;
+    }
+
+    .profile-avatar {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+/* ── Reduced motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .nav-mobile-menu,
+    .nav-mobile-overlay,
+    .hamburger-line,
+    .dropdown-menu {
+        transition: none;
+    }
 }

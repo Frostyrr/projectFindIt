@@ -369,8 +369,8 @@ $uid_param = $viewing_as_admin ? (int)$user['id'] : null;
          SCRIPTS
     ════════════════════════════════════════════════════ -->
     <script src="js/ProfileModals.js"></script>
-
     <script src="js/loginModal.js"></script>
     <script src="js/DropDown.js"></script>
+    <script src="js/navbar.js"></script>
 </body>
 </html>

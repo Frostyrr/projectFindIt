@@ -10,3 +10,39 @@
         width: 600px;
     }
 }
+
+    /* ── Navbar scroll shadow (JS adds .scrolled) ───────────────── */
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 52px;
+        letter-spacing: -1px;
+    }
+
+    .hero-text h2 {
+        font-size: 18px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .nav-container {
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 40px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}

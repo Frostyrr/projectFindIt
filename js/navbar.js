@@ -1,59 +1,104 @@
 /* ============================================================
-   FindIt — Mobile Navbar Toggle
+   FindIt — Navbar JS  |  navbar.js
+   Drop this before </body> on every page that includes navbar.php
    ============================================================ */
 
-document.addEventListener('DOMContentLoaded', function() {
-    
-    const hamburger = document.querySelector('.nav-hamburger');
-    const mobileMenu = document.querySelector('.nav-mobile-menu');
-    const mobileOverlay = document.querySelector('.nav-mobile-overlay');
-    const navbar = document.querySelector('.navbar');
-    let lastScroll = 0;
+(function () {
+    'use strict';
 
-    // ── Toggle menu ──────────────────────────────────────────
-    if (hamburger && mobileMenu && mobileOverlay) {
-        hamburger.addEventListener('click', toggleMenu);
-        mobileOverlay.addEventListener('click', closeMenu);
-        
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && hamburger.classList.contains('active')) {
-                closeMenu();
-            }
-        });
+    // ── Element refs ─────────────────────────────────────────
+    const navbar      = document.querySelector('.navbar');
+    const hamburger   = document.querySelector('.nav-hamburger');
+    const mobileMenu  = document.querySelector('.nav-mobile-menu');
+    const overlay     = document.querySelector('.nav-mobile-overlay');
+
+    // ── Scroll → add .scrolled class ─────────────────────────
+    if (navbar) {
+        const onScroll = () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 8);
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll(); // run once on load
     }
 
-    function toggleMenu() {
-        if (hamburger.classList.contains('active')) {
-            closeMenu();
-        } else {
-            openMenu();
-        }
-    }
-
+    // ── Mobile drawer helpers ─────────────────────────────────
     function openMenu() {
-        hamburger.classList.add('active');
-        mobileMenu.classList.add('active');
-        mobileOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        if (!hamburger || !mobileMenu || !overlay) return;
+        hamburger.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        mobileMenu.classList.add('open');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // lock scroll
     }
 
     function closeMenu() {
-        hamburger.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        mobileOverlay.classList.remove('active');
+        if (!hamburger || !mobileMenu || !overlay) return;
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.remove('open');
+        overlay.classList.remove('active');
         document.body.style.overflow = '';
     }
 
-    // ── Navbar shadow on scroll ──────────────────────────────
-    if (navbar) {
-        window.addEventListener('scroll', function() {
-            navbar.classList.toggle('scrolled', window.scrollY > 10);
-
-            // Close mobile menu on scroll
-            if (hamburger && hamburger.classList.contains('active')) {
-                closeMenu();
-            }
-        }, { passive: true });
+    function toggleMenu() {
+        mobileMenu && mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
     }
 
-});
+    // ── Hamburger click ───────────────────────────────────────
+    if (hamburger) {
+        hamburger.addEventListener('click', toggleMenu);
+    }
+
+    // ── Overlay click → close ─────────────────────────────────
+    if (overlay) {
+        overlay.addEventListener('click', closeMenu);
+    }
+
+    // ── Escape key → close ────────────────────────────────────
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+    });
+
+    // ── Close drawer when a mobile link is tapped ────────────
+    if (mobileMenu) {
+        mobileMenu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                // Small delay so the page doesn't jump before the drawer closes
+                setTimeout(closeMenu, 120);
+            });
+        });
+    }
+
+    // ── Profile dropdown (desktop) ────────────────────────────
+    function toggleDropdown(e) {
+        e.preventDefault();
+        e.stopPropagation(); // keep this click from bubbling to the document listener
+        const menu = document.getElementById('profileDropdown');
+        if (!menu) return;
+
+        const isOpen = menu.classList.toggle('open');
+
+        if (isOpen) {
+            // One-shot listener: first click anywhere outside closes the menu
+            const outside = (ev) => {
+                if (!menu.contains(ev.target)) {
+                    menu.classList.remove('open');
+                    document.removeEventListener('click', outside);
+                }
+            };
+            document.addEventListener('click', outside);
+        }
+    }
+
+    // Expose globally for the inline onclick in navbar.php
+    window.toggleDropdown = toggleDropdown;
+
+    // ── Highlight active nav link ─────────────────────────────
+    const currentPath = window.location.pathname.split('/').pop() || 'index.php';
+    document.querySelectorAll('.nav-links a, .nav-mobile-links a').forEach((link) => {
+        const href = (link.getAttribute('href') || '').split('/').pop();
+        if (href && href === currentPath) {
+            link.classList.add('active');
+        }
+    });
+})();

@@ -288,6 +288,7 @@ $date_value = !empty($item['date_lost_found']) ? date('Y-m-d', strtotime($item['
     <script src="js/loginModal.js"></script>
     <script src="js/fileUpload.js"></script>
     <script src="js/DropDown.js"></script>
+    <script src="js/navbar.js"></script>
 
 </body>
 </html>

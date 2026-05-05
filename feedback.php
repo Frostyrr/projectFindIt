@@ -127,6 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <script src="js/loginModal.js"></script>
     <script src="js/DropDown.js"></script>
+    <script src="js/navbar.js"></script>
     <script>
         function updateCounter(textarea) {
             const counter = document.getElementById('char-counter');

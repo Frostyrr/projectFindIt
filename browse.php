@@ -198,5 +198,6 @@ function typeLink($type, $search, $date) {
     <script src="js/loginModal.js"></script>
     <script src="js/goToDetails.js"></script>
     <script src="js/DropDown.js"></script>
+    <script src="js/navbar.js"></script>
 </body>
 </html>

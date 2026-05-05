@@ -1,10 +1,3 @@
-/* ============================================================
-   FindIt — Browse Page  |  browse.css
-   Aesthetic: Clean community-board meets modern card UI
-   Typefaces: Plus Jakarta Sans (headings) + DM Sans (body)
-   Enhanced with modern professional animations
-   ============================================================ */
-
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
 
@@ -36,88 +29,44 @@
 
 /* ── Keyframe Animations ───────────────────────────────────── */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0);    }
 }
 
 @keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.92);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1);    }
 }
 
 @keyframes shimmer {
-    0% {
-        background-position: -468px 0;
-    }
-    100% {
-        background-position: 468px 0;
-    }
+    0%   { background-position: -468px 0; }
+    100% { background-position:  468px 0; }
 }
 
 @keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
+    0%, 100% { transform: scale(1);    }
+    50%       { transform: scale(1.05); }
 }
 
 @keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0);     }
 }
 
 @keyframes badgePop {
-    0% {
-        transform: scale(0);
-        opacity: 0;
-    }
-    70% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+    0%   { transform: scale(0);   opacity: 0; }
+    70%  { transform: scale(1.1);             }
+    100% { transform: scale(1);   opacity: 1; }
 }
 
 @keyframes floatUpDown {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-8px);
-    }
+    0%, 100% { transform: translateY(0);  }
+    50%       { transform: translateY(-8px); }
 }
 
 @keyframes borderGlow {
-    0%, 100% {
-        border-color: var(--border);
-        box-shadow: var(--shadow-sm);
-    }
-    50% {
-        border-color: var(--green-300);
-        box-shadow: 0 0 0 4px rgba(61,122,84,.08);
-    }
+    0%, 100% { border-color: var(--border);    box-shadow: var(--shadow-sm); }
+    50%       { border-color: var(--green-300); box-shadow: 0 0 0 4px rgba(61,122,84,.08); }
 }
 
 /* ── Page wrapper ───────────────────────────────────────────── */
@@ -268,14 +217,12 @@
 .type-btn::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
+    background: rgba(255,255,255,.3);
+    transform: translate(-50%,-50%);
+    transition: width .6s, height .6s;
 }
 
 .type-btn:active::before {
@@ -295,21 +242,21 @@
     border-color: var(--ink-900);
     background: var(--ink-900);
     color: #fff;
-    animation: fadeInScale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation: fadeInScale 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
 }
 
 .type-btn.lost.active {
     border-color: var(--red-500);
     background: var(--red-500);
     color: #fff;
-    animation: fadeInScale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation: fadeInScale 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
 }
 
 .type-btn.found.active {
     border-color: var(--green-500);
     background: var(--green-500);
     color: #fff;
-    animation: fadeInScale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation: fadeInScale 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
 }
 
 /* ── Cards grid ─────────────────────────────────────────────── */
@@ -333,16 +280,16 @@
     animation: fadeInUp 0.5s both;
 }
 
-.report-card:nth-child(1)  { animation-delay: 0.05s; }
-.report-card:nth-child(2)  { animation-delay: 0.1s; }
-.report-card:nth-child(3)  { animation-delay: 0.15s; }
-.report-card:nth-child(4)  { animation-delay: 0.2s; }
-.report-card:nth-child(5)  { animation-delay: 0.25s; }
-.report-card:nth-child(6)  { animation-delay: 0.3s; }
-.report-card:nth-child(7)  { animation-delay: 0.35s; }
-.report-card:nth-child(8)  { animation-delay: 0.4s; }
-.report-card:nth-child(9)  { animation-delay: 0.45s; }
-.report-card:nth-child(10) { animation-delay: 0.5s; }
+.report-card:nth-child(1)    { animation-delay: 0.05s; }
+.report-card:nth-child(2)    { animation-delay: 0.10s; }
+.report-card:nth-child(3)    { animation-delay: 0.15s; }
+.report-card:nth-child(4)    { animation-delay: 0.20s; }
+.report-card:nth-child(5)    { animation-delay: 0.25s; }
+.report-card:nth-child(6)    { animation-delay: 0.30s; }
+.report-card:nth-child(7)    { animation-delay: 0.35s; }
+.report-card:nth-child(8)    { animation-delay: 0.40s; }
+.report-card:nth-child(9)    { animation-delay: 0.45s; }
+.report-card:nth-child(10)   { animation-delay: 0.50s; }
 .report-card:nth-child(n+11) { animation-delay: 0.55s; }
 
 .report-card:hover {
@@ -370,7 +317,7 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease;
+    transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.5s ease;
 }
 
 .report-card:hover .card-image {
@@ -395,7 +342,6 @@
     background: linear-gradient(135deg, var(--green-100) 0%, #dce8e0 100%);
 }
 
-/* ── Shimmer loading effect for images ─────────────────────── */
 .card-image-container:empty,
 .card-image-container img[src=""] {
     background: linear-gradient(to right, var(--ink-100) 8%, #e8f4ed 18%, var(--ink-100) 33%);
@@ -406,8 +352,7 @@
 /* ── Badges ─────────────────────────────────────────────────── */
 .card-badges {
     position: absolute;
-    top: 8px;
-    left: 8px;
+    top: 8px; left: 8px;
     display: flex;
     gap: 5px;
     flex-wrap: wrap;
@@ -426,18 +371,11 @@
     color: #fff;
     backdrop-filter: blur(4px);
     box-shadow: 0 2px 6px rgba(0,0,0,.16);
-    animation: badgePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation: badgePop 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
 }
 
-.badge.lost   { 
-    background: var(--red-500);
-    animation-delay: 0.2s;
-}
-
-.badge.found  { 
-    background: var(--green-500);
-    animation-delay: 0.2s;
-}
+.badge.lost  { background: var(--red-500);   animation-delay: 0.2s; }
+.badge.found { background: var(--green-500);  animation-delay: 0.2s; }
 
 .report-card:hover .badge {
     transform: translateY(-2px);
@@ -455,9 +393,7 @@
     transition: padding var(--transition-smooth);
 }
 
-.report-card:hover .card-content {
-    padding-top: 13px;
-}
+.report-card:hover .card-content { padding-top: 13px; }
 
 .card-meta {
     display: flex;
@@ -473,9 +409,7 @@
     transition: color var(--transition-smooth);
 }
 
-.report-card:hover .meta-item {
-    color: var(--ink-600);
-}
+.report-card:hover .meta-item { color: var(--ink-600); }
 
 .card-title {
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -491,9 +425,7 @@
     transition: color var(--transition-smooth);
 }
 
-.report-card:hover .card-title {
-    color: var(--green-900);
-}
+.report-card:hover .card-title { color: var(--green-900); }
 
 .card-desc {
     font-size: 11.5px;
@@ -515,9 +447,7 @@
     transition: border-color var(--transition-smooth);
 }
 
-.report-card:hover .card-divider {
-    border-color: var(--green-200);
-}
+.report-card:hover .card-divider { border-color: #c8dfd0; }
 
 /* ── Card footer ────────────────────────────────────────────── */
 .card-footer {
@@ -539,9 +469,7 @@
     transition: color var(--transition-smooth);
 }
 
-.report-card:hover .card-location {
-    color: var(--ink-600);
-}
+.report-card:hover .card-location { color: var(--ink-600); }
 
 /* ── View Details button ────────────────────────────────────── */
 .view-details-btn {
@@ -568,14 +496,12 @@
 .view-details-btn::after {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%);
-    transition: width 0.5s, height 0.5s;
+    background: rgba(255,255,255,.2);
+    transform: translate(-50%,-50%);
+    transition: width .5s, height .5s;
 }
 
 .view-details-btn:hover {
@@ -611,7 +537,7 @@
     border: 1.5px dashed var(--border);
     border-radius: var(--radius-lg);
     color: var(--ink-300);
-    animation: fadeInScale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation: fadeInScale 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
 }
 
 .no-results p {
@@ -620,6 +546,7 @@
     font-weight: 600;
     margin: 0;
     color: var(--ink-600);
+    text-align: center;
 }
 
 .no-results::before {
@@ -630,21 +557,143 @@
     animation: floatUpDown 3s ease-in-out infinite;
 }
 
-/* ── Responsive ─────────────────────────────────────────────── */
-@media (max-width: 768px) {
+/* ── Pagination ─────────────────────────────────────────────── */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.5s 0.3s cubic-bezier(0.25,0.46,0.45,0.94) both;
+}
+
+.pagination-btn,
+.pagination-page {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 38px;
+    padding: 0 10px;
+    border-radius: var(--radius-sm);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1.5px solid var(--border);
+    color: var(--ink-600);
+    background: var(--surface);
+    cursor: pointer;
+    transition: all var(--transition-smooth);
+    user-select: none;
+}
+
+.pagination-btn:hover,
+.pagination-page:hover {
+    border-color: var(--green-300);
+    color: var(--green-900);
+    background: var(--green-100);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26,61,43,.1);
+}
+
+.pagination-page.active {
+    border-color: var(--green-900);
+    background: var(--green-900);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(26,61,43,.25);
+    pointer-events: none;
+}
+
+.pagination-btn.disabled,
+.pagination-btn[disabled] {
+    opacity: 0.35;
+    pointer-events: none;
+    cursor: default;
+}
+
+.pagination-ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+    color: var(--ink-300);
+    letter-spacing: 1px;
+    user-select: none;
+}
+
+/* ── Results count / info bar ───────────────────────────────── */
+.results-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    gap: 8px;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.5s 0.25s cubic-bezier(0.25,0.46,0.45,0.94) both;
+}
+
+.results-count {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-300);
+}
+
+.results-count strong {
+    color: var(--ink-600);
+    font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — TABLET  (max 900px)
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
     .browse-container {
-        margin-top: 75px;
-        padding: 0 16px;
+        margin-top: 80px;
+        padding: 0 20px;
+    }
+
+    .reports-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — MOBILE  (max 768px)
+   The filter strip sticks below the navbar so you can always
+   switch between Lost / Found without scrolling back up.
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+    /* ── Container & heading ──────────────────────────────────── */
+    .browse-container {
+        margin-top: 68px;
+        padding: 0 14px;
+        /* room for the sticky filter bar (56px) */
+        padding-top: 0;
+    }
+
+    .search-section {
+        margin-bottom: 0;
     }
 
     .search-section h2 {
-        font-size: 22px;
+        font-size: 20px;
+        letter-spacing: -0.3px;
+        margin-bottom: 12px;
     }
 
+    /* ── Search form ──────────────────────────────────────────── */
     .search-filter-form {
         flex-direction: column;
         align-items: stretch;
-        padding: 14px 16px;
+        gap: 10px;
+        padding: 14px;
+        border-radius: var(--radius-md);
     }
 
     .search-box {
@@ -652,41 +701,352 @@
         width: 100%;
     }
 
-    .reports-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
+    /* Larger touch target for the input on mobile */
+    .search-box input {
+        font-size: 16px; /* prevents iOS auto-zoom */
+        padding: 14px 52px 14px 16px;
+        border-radius: var(--radius-md);
     }
 
-    .report-card {
-        animation: fadeInUp 0.4s both;
+    /* Bigger search button tap area */
+    .search-icon-btn {
+        width: 40px;
+        height: 40px;
+        right: 6px;
     }
 
-    .card-content {
-        padding: 14px 15px 12px;
-    }
-
+    /* ── Sticky filter pill bar ───────────────────────────────── */
     .type-filter-buttons {
-        flex-wrap: wrap;
+        position: sticky;
+        /* sits just below the navbar (~56px tall) */
+        top: 56px;
+        z-index: 100;
+        background: rgba(255,255,255,.92);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        margin: 0 -14px;           /* bleed to screen edges */
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--border);
+        justify-content: flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: nowrap;         /* single scrollable row */
+        gap: 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;     /* hide scrollbar Firefox */
+        animation: none;           /* no delay for sticky UI */
     }
-}
 
-@media (max-width: 480px) {
+    .type-filter-buttons::-webkit-scrollbar {
+        display: none;             /* hide scrollbar Chrome/Safari */
+    }
+
+    /* Ensure pills don't shrink inside the scroll row */
+    .type-btn {
+        flex-shrink: 0;
+        padding: 9px 20px;
+        font-size: 13px;
+        /* larger tap target */
+        min-height: 38px;
+        touch-action: manipulation;
+    }
+
+    /* ── Results info bar ─────────────────────────────────────── */
+    .results-info {
+        margin-top: 16px;
+        margin-bottom: 12px;
+    }
+
+    /* ── Cards grid: 2-col on tablet-ish phones ──────────────── */
     .reports-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        /* top margin accounts for sticky filter bar height (~56px) */
+        margin-top: 0;
     }
 
+    /* Slightly faster entrance animation on mobile (feels snappier) */
+    .report-card {
+        animation: fadeInUp 0.35s both;
+        border-radius: var(--radius-md);
+    }
+
+    /* Remove hover lift — use active-press instead on touch */
+    .report-card:hover {
+        transform: none;
+        box-shadow: var(--shadow-sm);
+        border-color: var(--border);
+    }
+
+    .report-card:active {
+        transform: scale(0.97);
+        transition: transform 0.1s ease;
+        border-color: var(--green-300);
+        box-shadow: var(--shadow-md);
+    }
+
+    /* Freeze image zoom on touch (no hover state that lingers) */
+    .report-card:hover .card-image { transform: none; }
+
+    /* ── Card content spacing ─────────────────────────────────── */
+    .card-content {
+        padding: 10px 12px 10px;
+        gap: 4px;
+    }
+
+    .report-card:hover .card-content { padding-top: 10px; } /* undo hover shift */
+
+    .card-title {
+        font-size: 12.5px;
+        -webkit-line-clamp: 2;
+    }
+
+    .card-desc {
+        font-size: 11px;
+        -webkit-line-clamp: 2;
+    }
+
+    .meta-item { font-size: 10.5px; }
+
+    /* ── Footer: stack location above the button ──────────────── */
     .card-footer {
         flex-direction: column;
         align-items: flex-start;
-    }
-
-    .view-details-btn {
-        width: 100%;
-        justify-content: center;
+        gap: 6px;
     }
 
     .card-location {
         max-width: 100%;
+        font-size: 10.5px;
+    }
+
+    /* Full-width tap target for "View Details" */
+    .view-details-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 8px 10px;
+        font-size: 10px;
+        border-radius: var(--radius-sm);
+        /* make sure text isn't cut */
+        min-height: 34px;
+    }
+
+    /* ── No-results panel ─────────────────────────────────────── */
+    .no-results {
+        padding: 48px 24px;
+        border-radius: var(--radius-md);
+    }
+
+    .no-results p { font-size: 14px; }
+    .no-results::before { font-size: 36px; }
+
+    /* ── Pagination ───────────────────────────────────────────── */
+    .pagination {
+        gap: 5px;
+        margin-top: 28px;
+        /* don't wrap — allow horizontal scroll for many pages */
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;     /* room for scroll indicator */
+        justify-content: flex-start;
+    }
+
+    .pagination::-webkit-scrollbar { display: none; }
+
+    .pagination-btn,
+    .pagination-page {
+        /* larger, finger-friendly tap targets */
+        min-width: 42px;
+        height: 42px;
+        font-size: 13px;
+        flex-shrink: 0;
+        border-radius: var(--radius-sm);
+        touch-action: manipulation;
+    }
+
+    /* Suppress hover lift on touch devices */
+    .pagination-btn:hover,
+    .pagination-page:hover {
+        transform: none;
+    }
+
+    .pagination-btn:active,
+    .pagination-page:active {
+        background: var(--green-100);
+        border-color: var(--green-300);
+        transform: scale(0.95);
+        transition: transform 0.08s ease;
+    }
+
+    .pagination-ellipsis {
+        width: 30px;
+        height: 42px;
+        font-size: 13px;
+        flex-shrink: 0;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — SMALL PHONES  (max 430px)
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 430px) {
+
+    .browse-container {
+        margin-top: 60px;
+        padding: 0 12px;
+    }
+
+    .search-section h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .search-filter-form {
+        padding: 12px;
+        border-radius: var(--radius-md);
+        gap: 8px;
+    }
+
+    /* Single-column grid on tiny screens */
+    .reports-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    /* Horizontal card layout on single-column — thumb-scroll friendly */
+    .report-card {
+        flex-direction: row;
+        border-radius: var(--radius-md);
+        min-height: 100px;
+    }
+
+    /* Fixed-width image on the left */
+    .card-image-container {
+        width: 110px;
+        min-width: 110px;
+        aspect-ratio: unset;
+        height: auto;
+        border-radius: var(--radius-md) 0 0 var(--radius-md);
+    }
+
+    .card-image {
+        border-radius: inherit;
+    }
+
+    .placeholder-image {
+        border-radius: inherit;
+        font-size: 11px;
+    }
+
+    /* Badges sit top-left of the image panel */
+    .card-badges {
+        top: 6px;
+        left: 6px;
+    }
+
+    .badge {
+        font-size: 9px;
+        padding: 2px 6px;
+    }
+
+    /* Content fills remaining width */
+    .card-content {
+        flex: 1;
+        padding: 10px 12px 8px;
+        gap: 2px;
+        min-width: 0; /* prevent overflow */
+    }
+
+    .report-card:hover .card-content { padding-top: 10px; }
+
+    .card-title {
+        font-size: 13px;
+        -webkit-line-clamp: 2;
+    }
+
+    .card-desc {
+        font-size: 11px;
+        -webkit-line-clamp: 2;
+    }
+
+    .meta-item { font-size: 10px; }
+
+    .card-divider { margin: 5px 0 3px; }
+
+    .card-footer {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 4px;
+    }
+
+    .card-location {
+        font-size: 10px;
+        max-width: 50%;
+        flex-shrink: 1;
+    }
+
+    /* Compact button — not full-width in horizontal card */
+    .view-details-btn {
+        width: auto;
+        flex-shrink: 0;
+        padding: 5px 10px;
+        font-size: 9.5px;
+        min-height: 30px;
+        border-radius: 6px;
+    }
+
+    /* Filter pill bar — adjust sticky top if navbar is shorter */
+    .type-filter-buttons {
+        top: 52px;
+        padding: 8px 12px;
+        margin: 0 -12px;
+    }
+
+    /* Pagination compact */
+    .pagination {
+        gap: 4px;
+        margin-top: 20px;
+    }
+
+    .pagination-btn,
+    .pagination-page {
+        min-width: 38px;
+        height: 38px;
+        font-size: 12px;
+    }
+
+    /* No-results panel compact */
+    .no-results {
+        padding: 36px 16px;
+    }
+
+    .no-results::before { font-size: 30px; }
+    .no-results p { font-size: 13px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SAFE AREA INSETS — notched / Dynamic Island iPhones & Android
+   ═══════════════════════════════════════════════════════════════ */
+@supports (padding: env(safe-area-inset-bottom)) {
+    .browse-container {
+        padding-bottom: calc(80px + env(safe-area-inset-bottom));
+    }
+
+    @media (max-width: 768px) {
+        .type-filter-buttons {
+            padding-left:  max(14px, env(safe-area-inset-left));
+            padding-right: max(14px, env(safe-area-inset-right));
+        }
+    }
+
+    @media (max-width: 430px) {
+        .type-filter-buttons {
+            padding-left:  max(12px, env(safe-area-inset-left));
+            padding-right: max(12px, env(safe-area-inset-right));
+        }
     }
 }
 
@@ -696,26 +1056,18 @@
     .search-section,
     .search-section h2,
     .type-filter-buttons,
+    .pagination,
     .badge,
     .browse-container,
     .no-results {
         animation: none;
         transition: none;
     }
-    
-    .no-results::before {
-        animation: none;
-    }
-    
-    .card-image {
-        transition: none;
-    }
-    
-    .report-card:hover {
-        transform: none;
-    }
-    
-    .report-card:hover .card-image {
-        transform: none;
-    }
+
+    .no-results::before { animation: none; }
+    .card-image         { transition: none; }
+
+    .report-card:hover  { transform: none; }
+    .report-card:active { transform: scale(0.97); }
+    .report-card:hover  .card-image { transform: none; }
 }
