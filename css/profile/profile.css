@@ -174,7 +174,7 @@
 .primary-btn {
     background: #1a3d2b;
     color: white; 
-    padding: 8px 120px; 
+    padding: 8px 16px; 
     border-radius: 8px; 
     text-decoration: none; 
     font-weight: 600;
@@ -186,18 +186,211 @@
     width: 250px;
 }
 
-/* ── Responsive adjustments ── */
-@media (max-width: 950px) {
-    .profile-reports-grid {
-        grid-template-columns: repeat(2, 1fr); /* Drop to 2 columns */
-    }
+.icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    font-size: 14px;
+    min-width: 36px;
+    height: 36px;
+}
+
+.icon-btn i {
+    pointer-events: none;
+}
+
+.view-btn {
+    background: #e8f4ed;
+    color: #2d6147;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background: #f0f3f1;
+    color: #3f4942;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background: #fdecea;
+    color: #c0392b;
+    border: none;
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {
+
+    /* Container */
+    .profile-container {
+        margin: 80px auto 40px;
+        padding: 0 16px;
+    }
+
+    /* Stack top layout */
     .profile-top-grid {
-        grid-template-columns: 1fr; /* Stack header and settings */
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
+
+    /* Profile header → vertical */
+    .profile-info-wrapper {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .profile-avatar-large {
+        width: 72px;
+        height: 72px;
+    }
+
+    .profile-container .profile-name {
+        font-size: 20px;
+    }
+
+    .profile-email {
+        font-size: 14px;
+    }
+
+    /* Settings buttons */
+    .settings-actions {
+        gap: 10px;
+    }
+
+    .action-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    /* Reports grid → KEEP 2 columns (important) */
     .profile-reports-grid {
-        grid-template-columns: 1fr; /* Drop to 1 column on mobile */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
+
+    /* Cards tighter */
+    .card {
+        padding: 16px;
+    }
+
+    /* Card buttons */
+    .profile-card-actions {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .p-btn {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    /* Fix weird wide button */
+    .primary-btn {
+        display: none;
+    }
+
+    .profile-card-actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+        flex-wrap: nowrap;
+    }
+
+    .icon-btn {
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .view-btn {
+        background: #e8f4ed;
+        color: #2d6147;
+    }
+
+    .edit-btn {
+        background: #f0f3f1;
+        color: #3f4942;
+    }
+
+    .delete-btn {
+        background: #fdecea;
+        color: #c0392b;
+    }
+
+    .icon-btn:active {
+    transform: scale(0.92);
+    }
+
+    .icon-btn:hover {
+        filter: brightness(0.95);
+    }
+}
+
+@media (max-width: 480px) {
+
+    .profile-container {
+        padding: 0 14px;
+    }
+
+    .profile-reports-grid {
+        gap: 10px;
+    }
+
+    .card {
+        padding: 14px;
+    }
+
+    .profile-avatar-large {
+        width: 64px;
+        height: 64px;
+    }
+
+    .profile-container .profile-name {
+        font-size: 18px;
+    }
+
+    .profile-email {
+        font-size: 13px;
+    }
+
+    .p-btn {
+        font-size: 11px;
+        padding: 8px;
+    }
+
+        .view-btn {
+        background: #e8f4ed;
+        color: #2d6147;
+    }
+
+    .edit-btn {
+        background: #f0f3f1;
+        color: #3f4942;
+    }
+
+    .delete-btn {
+        background: #fdecea;
+        color: #c0392b;
+    }
+
+    .icon-btn:active {
+    transform: scale(0.92);
+    }
+
+    .icon-btn:hover {
+        filter: brightness(0.95);
+    }
+
+    
 }

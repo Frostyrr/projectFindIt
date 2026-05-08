@@ -159,6 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="js/fileUpload.js"></script>
     <script src="js/DropDown.js"></script>
     <script src="js/navbar.js"></script>
+    <script src="js/bottom-nav.js"></script>
 
 </body>
 </html>

@@ -214,26 +214,26 @@ $uid_param = $viewing_as_admin ? (int)$user['id'] : null;
                                 <hr class="card-divider">
 
                                 <div class="profile-card-actions">
-                                    <a href="item_details.php?id=<?= $row['id'] ?>"
-                                       class="p-btn view-btn">View</a>
+                                    <a href="item_details.php?id=<?= $row['id'] ?>" class="p-btn icon-btn view-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
 
                                     <?php if (!$viewing_as_admin): ?>
                                         <!-- Owner: Edit → edit_report.php -->
-                                        <a href="edit_report.php?id=<?= $row['id'] ?>"
-                                           class="p-btn edit-btn">Edit</a>
+                                        <a href="edit_report.php?id=<?= $row['id'] ?>" class="p-btn icon-btn edit-btn">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
 
                                         <!-- Owner: Delete → opens owner item modal -->
-                                        <button class="p-btn delete-btn"
-                                                style="border:none;cursor:pointer;"
+                                        <button class="p-btn icon-btn delete-btn"
                                                 onclick="openOwnerItemDelete(<?= $row['id'] ?>, '<?= htmlspecialchars($row['item_name'], ENT_QUOTES) ?>')">
-                                            Delete
+                                            <i class="fas fa-trash"></i>
                                         </button>
                                     <?php else: ?>
                                         <!-- Admin: Delete → opens admin item modal -->
-                                        <button class="p-btn delete-btn"
-                                                style="border:none;cursor:pointer;"
+                                        <button class="p-btn icon-btn delete-btn"
                                                 onclick="openAdminItemDelete(<?= $row['id'] ?>, '<?= htmlspecialchars($row['item_name'], ENT_QUOTES) ?>')">
-                                            Delete
+                                            <i class="fas fa-trash"></i>
                                         </button>
                                     <?php endif; ?>
                                 </div>
@@ -372,5 +372,6 @@ $uid_param = $viewing_as_admin ? (int)$user['id'] : null;
     <script src="js/loginModal.js"></script>
     <script src="js/DropDown.js"></script>
     <script src="js/navbar.js"></script>
+    <script src="js/bottom-nav.js"></script>
 </body>
 </html>

@@ -186,5 +186,8 @@ $stmt->close();
 
     <script src="js/loginModal.js"></script>
     <script src="js/DropDown.js"></script>
+    <script src="js/DropDown.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/bottom-nav.js"></script>
 </body>
 </html>

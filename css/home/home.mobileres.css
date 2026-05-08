@@ -13,6 +13,23 @@
 
     /* ── Navbar scroll shadow (JS adds .scrolled) ───────────────── */
 @media (max-width: 768px) {
+
+    .hero {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        
+    }
+
+    .hero-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 150px;
+    }
+
     .hero-text h1 {
         font-size: 52px;
         letter-spacing: -1px;

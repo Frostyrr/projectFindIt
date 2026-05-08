@@ -26,19 +26,21 @@ $result = $conn->query($sql);
     <!-- Hero -->
     <div class="hero">
 
-        <div class="hero-text">
-            <h2>Find your</h2>
-            <h1>Lost Items</h1>
-            <p>A dedicated digital space to report, track, and recover lost items with ease.</p>
-        </div>
+        <div class="hero-center">
+            <div class="hero-text">
+                <h2>Find your</h2>
+                <h1>Lost Items</h1>
+                <p>A dedicated digital space to report, track, and recover lost items with ease.</p>
+            </div>
 
-        <div class="hero-buttons">
-            <a href="browse.php" class="btn primary">Browse Items</a>
-            <?php if (isset($_SESSION['user'])): ?>
-                <a href="report.php" class="btn secondary">Report Item</a>
-            <?php else: ?>
-                <a href="#" onclick="openLoginModal()" class="btn secondary">Report Lost Item</a>
-            <?php endif; ?>
+            <div class="hero-buttons">
+                <a href="browse.php" class="btn primary">Browse Items</a>
+                <?php if (isset($_SESSION['user'])): ?>
+                    <a href="report.php" class="btn secondary">Report Item</a>
+                <?php else: ?>
+                    <a href="#" onclick="openLoginModal()" class="btn secondary">Report Lost Item</a>
+                <?php endif; ?>
+            </div>
         </div>
 
         <a href="#recent-reports" class="hero-scroll-cue">

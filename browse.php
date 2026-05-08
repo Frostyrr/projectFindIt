@@ -60,6 +60,7 @@ function typeLink($type, $search, $date) {
     <meta charset="UTF-8">
     <title>Browse Items - FindIt</title>
     <link rel="icon" type="image/x-icon" href="images/findIconWithBG.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/home/main.css">
     <link rel="stylesheet" href="css/auth.css">
     <link rel="stylesheet" href="css/recent-reports.css">
@@ -199,5 +200,6 @@ function typeLink($type, $search, $date) {
     <script src="js/goToDetails.js"></script>
     <script src="js/DropDown.js"></script>
     <script src="js/navbar.js"></script>
+    <script src="js/bottom-nav.js"></script>
 </body>
 </html>

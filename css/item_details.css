@@ -332,7 +332,7 @@
 /* ── Mobile ─────────────────────────────────────────────────── */
 @media (max-width: 768px) {
     .details-page-container {
-        margin-top: 80px;
+        margin-top: 50px;
         padding: 0 16px;
     }
 

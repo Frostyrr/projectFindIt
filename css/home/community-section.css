@@ -42,3 +42,23 @@
     text-align: center;
     color: rgb(231, 231, 231);
 }
+
+@media (max-width: 768px) {
+    .community-card {
+        width: 90%;
+        padding: 25px;
+    }
+
+    .community-card h1 {
+        font-size: 32px;
+    }
+
+    .community-card h2 {
+        font-size: 18px;
+    }
+
+    .community-card p {
+        font-size: 14px;
+        text-align: center;
+    }
+}

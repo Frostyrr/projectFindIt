@@ -136,5 +136,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             counter.classList.toggle('warn', len > 850);
         }
     </script>
+    <script src="js/bottom-nav.js"></script>
 </body>
 </html>
