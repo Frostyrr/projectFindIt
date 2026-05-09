@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $desc   = trim($_POST['description'] ?? '');
             $loc    = trim($_POST['location']    ?? '');
             $type   = in_array($_POST['type']   ?? '', ['lost', 'found'])             ? $_POST['type']   : 'lost';
-            $status = in_array($_POST['status'] ?? '', ['active', 'found','resolved']) ? $_POST['status'] : 'active';
+            $status = in_array($_POST['status'] ?? '', ['active', 'claimed','resolved']) ? $_POST['status'] : 'active';
             $date   = $_POST['date_lost_found'] ?: null;
 
             if (!$name) {
@@ -75,47 +75,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     header("Location: items.php");
     exit();
-    // ── EDIT ─────────────────────────────────────────────────
-    if ($action === 'edit' && $item_id > 0) {
-        $item_name   = trim($_POST['item_name']    ?? '');
-        $description = trim($_POST['description']  ?? '');
-        $location    = trim($_POST['location']     ?? '');
-        $type        = in_array($_POST['type']   ?? '', ['lost','found'])              ? $_POST['type']   : 'lost';
-        $status      = in_array($_POST['status'] ?? '', ['active','recovered']) ? $_POST['status'] : 'active';
-        $date_lf     = !empty($_POST['date_lost_found']) ? $_POST['date_lost_found'] : null;
-
-        if ($item_name === '') {
-            $_SESSION['flash'] = ['type' => 'error', 'msg' => "Item name cannot be empty."];
-            header("Location: dashboard.php");
-            exit();
-        }
-
-        try {
-            $s = $conn->prepare("
-                UPDATE items
-                   SET item_name       = ?,
-                       description     = ?,
-                       location        = ?,
-                       type            = ?,
-                       status          = ?,
-                       date_lost_found = ?
-                 WHERE id = ?
-            ");
-            $s->bind_param("ssssssi",
-                $item_name, $description, $location,
-                $type, $status, $date_lf, $item_id
-            );
-            $s->execute();
-            $s->close();
-
-            $_SESSION['flash'] = ['type' => 'success', 'msg' => "Item #$item_id updated successfully."];
-        } catch (mysqli_sql_exception $e) {
-            $_SESSION['flash'] = ['type' => 'error', 'msg' => "Update failed: " . $e->getMessage()];
-        }
-
-        header("Location: dashboard.php");
-        exit();
-    }
 }
 
 // ── Get and clear the flash message ──────────────────────────
@@ -165,15 +124,16 @@ if ($types) $ds->bind_param($types, ...$params);
 $ds->execute();
 $items = $ds->get_result();
 $ds->close();
-
 // ── Fetch summary stats ───────────────────────────────────────
 $stats = $conn->query("
     SELECT
         COUNT(*) AS total,
         SUM(type='lost' AND status='active') AS active_lost,
-        SUM(status='found') AS recovered
+        SUM(status='claimed') AS claimed,
+        SUM(status='resolved') AS resolved
     FROM items
 ")->fetch_assoc();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -213,7 +173,7 @@ $stats = $conn->query("
         <?php endif; ?>
 
         <!-- Stat cards -->
-        <div class="stats-grid">
+        <div class="stats-grid items">
             <div class="stat-card">
                 <div class="stat-card-left">
                     <span class="stat-label">Total Items</span>
@@ -232,11 +192,19 @@ $stats = $conn->query("
             </div>
             <div class="stat-card">
                 <div class="stat-card-left">
-                    <span class="stat-label">Recovered</span>
-                    <span class="stat-value"><?= $stats['recovered'] ?></span>
-                    <span class="stat-sub">Successfully found</span>
+                    <span class="stat-label">Claimed Lost</span>
+                    <span class="stat-value"><?= $stats['claimed'] ?></span>
+                    <span class="stat-sub">Successfully claimed</span>
                 </div>
-                <div class="stat-icon amber"><i class="fas fa-circle-check"></i></div>
+                <div class="stat-icon amber"><i class="fas fa-hand-holding"></i></i></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-left">
+                    <span class="stat-label">Resolved Lost</span>
+                    <span class="stat-value"><?= $stats['resolved'] ?></span>
+                    <span class="stat-sub">Successfully resolved</span>
+                </div>
+                <div class="stat-icon amber"><i class="fas fa-handshake"></i></i></div>
             </div>
         </div>
 
@@ -265,7 +233,7 @@ $stats = $conn->query("
                     <select name="status" class="filter-select">
                         <option value="">All Statuses</option>
                         <option value="active"   <?= $fstat === 'active'   ? 'selected' : '' ?>>Active</option>
-                        <option value="found"    <?= $fstat === 'found'    ? 'selected' : '' ?>>Found</option>
+                        <option value="claimed"    <?= $fstat === 'claimed'    ? 'selected' : '' ?>>Claimed</option>
                         <option value="resolved" <?= $fstat === 'resolved' ? 'selected' : '' ?>>Resolved</option>
                     </select>
 

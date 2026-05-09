@@ -189,4 +189,150 @@ body {
     transition: ease 0.3s;
 }
 
-.header-card { }
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+    .auth-card form {
+        width: 90%;
+        max-width: 400px;
+        padding: 30px 20px;
+        margin: 20px;
+    }
+
+    .auth-card form h2 {
+        font-size: 1.5rem;
+    }
+
+    .auth-card input {
+        padding: 10px;
+        font-size: 16px; /* Prevents zoom on mobile */
+        width: 100%;
+    }
+
+    .button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .close-btn {
+        top: 8px;
+        right: 12px;
+        font-size: 24px;
+    }
+
+    .popup {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .google-btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .google-btn img {
+        width: 16px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        margin-top: 20px;
+    }
+
+    .auth-card form p {
+        font-size: 13px;
+    }
+
+    .divider {
+        margin-bottom: 15px;
+    }
+}
+
+/* Small phones (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .auth-card form {
+        width: 95%;
+        padding: 25px 15px;
+    }
+
+    .auth-card form h2 {
+        font-size: 1.3rem;
+    }
+
+    .button.primary {
+        margin-top: 10px;
+    }
+
+    .close-btn {
+        top: 6px;
+        right: 10px;
+        font-size: 22px;
+    }
+
+    .auth-card input {
+        padding: 8px;
+    }
+
+    .google-btn {
+        padding: 8px;
+    }
+}
+
+/* Landscape mode for phones */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    .auth-card form {
+        padding: 20px;
+        gap: 8px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .auth-card form h2 {
+        margin-bottom: 0;
+    }
+
+    .divider {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    .button.primary {
+        margin-top: 10px;
+    }
+}
+
+/* Large screens and up (optional refinements) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .auth-card form {
+        width: 420px;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: hover) {
+    .button:hover {
+        opacity: 0.9;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+}
+
+/* Mobile touch-friendly tap targets */
+@media (max-width: 768px) {
+    .button, 
+    .google-btn, 
+    .close-btn,
+    .auth-card form a {
+        min-height: 44px; /* Better touch target size */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .close-btn {
+        min-height: auto;
+    }
+
+    .auth-card form a {
+        min-height: auto;
+        padding: 5px;
+    }
+}

@@ -126,7 +126,7 @@ function stars(int $n): string {
         <?php endif; ?>
 
         <!-- Stat cards -->
-        <div class="stats-grid">
+        <div class="stats-grid feedback">
             <div class="stat-card">
                 <div class="stat-card-left">
                     <span class="stat-label">Total Feedback</span>
