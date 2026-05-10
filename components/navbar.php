@@ -55,12 +55,6 @@
                             </a>
                         </li>
                         <li>
-                            <a href="my-reports.php">
-                                <span class="material-symbols-outlined">folder_open</span>
-                                My Reports
-                            </a>
-                        </li>
-                        <li>
                             <a href="feedback.php">
                                 <span class="material-symbols-outlined">feedback</span>
                                 Feedback
@@ -122,12 +116,6 @@
                 <a href="profile.php">
                     <span class="material-symbols-outlined">person</span>
                     Profile
-                </a>
-            </li>
-            <li>
-                <a href="my-reports.php">
-                    <span class="material-symbols-outlined">folder_open</span>
-                    My Reports
                 </a>
             </li>
             <li>
