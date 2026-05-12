@@ -147,7 +147,6 @@ function typeLink($type, $search, $date) {
 
                             <div class="card-footer">
                                 <span class="card-location">📍 <?= htmlspecialchars($row['location']) ?></span>
-                                <a href="item_details.php?id=<?= $row['id'] ?>" class="view-details-btn">VIEW DETAILS</a>
                             </div>
                         </div>
                     </div>

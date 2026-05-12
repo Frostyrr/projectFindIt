@@ -253,7 +253,7 @@ $stats = $conn->query("
             <div class="items-grid">
                 <?php if ($items && $items->num_rows > 0): ?>
                     <?php while ($row = $items->fetch_assoc()): ?>
-                        <div class="item-card" id="row-<?= $row['id'] ?>">
+                        <div class="item-card" id="row-<?= $row['id'] ?>" onclick="fromAdminToDetails(<?= $row['id'] ?>)">
 
                             <!-- Image or placeholder -->
                             <div class="item-card-image">
@@ -335,6 +335,8 @@ $stats = $conn->query("
 <?php include '../admin/edit-modal.dashboard.php'; ?>
 <?php include '../admin/delete-modal.dashboard.php'; ?>
 <script src="../js/AdminDashboard.js"></script>
+<script src="../js/goToDetails.js"></script>
+
 </body>
 </html>
 <?php $conn->close(); ?>

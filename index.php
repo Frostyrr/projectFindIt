@@ -3,7 +3,7 @@ session_start();
 include 'db.php';
 include 'user_activity.php';
 
-$sql = "SELECT * FROM items WHERE type = 'lost' AND status = 'active' ORDER BY created_at DESC LIMIT 3";
+$sql = "SELECT * FROM items WHERE status = 'active' ORDER BY created_at DESC LIMIT 3";
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>

@@ -11,7 +11,14 @@
                     <?php endif; ?>
                                 
                     <div class="card-badges">
-                        <span class="badge status-badge lost">Lost</span>
+                        <?php if (strtolower($row['status']) === 'found'): ?>
+                            <span class="badge status-badge found" style="background-color: #3d7a54;">Found</span>
+                        <?php else: ?>
+                            <span class="badge status-badge <?= strtolower($row['type']) ?>"
+                                    style="background-color: <?= strtolower($row['type']) === 'lost' ? '#d9534f' : '#3d7a54' ?>;">
+                                <?= ucfirst(htmlspecialchars($row['type'])) ?>
+                            </span>
+                        <?php endif; ?>
                     </div>
                 </div>
                             
