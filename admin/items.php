@@ -253,7 +253,7 @@ $stats = $conn->query("
             <div class="items-grid">
                 <?php if ($items && $items->num_rows > 0): ?>
                     <?php while ($row = $items->fetch_assoc()): ?>
-                        <div class="item-card" id="row-<?= $row['id'] ?>" onclick="fromAdminToDetails(<?= $row['id'] ?>)">
+                        <div class="item-card" id="row-<?= $row['id'] ?>">
 
                             <!-- Image or placeholder -->
                             <div class="item-card-image">
