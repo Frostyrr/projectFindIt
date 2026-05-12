@@ -215,7 +215,7 @@ function stars(int $n): string {
                                     <?php endif; ?>
                                 </span>
                                 <button class="btn-delete-feedback"
-                                        onclick="openDeleteModal(<?= $row['id'] ?>, '<?= htmlspecialchars($row['subject'], ENT_QUOTES) ?>')">
+                                        onclick="openfbDeleteModal(<?= $row['id'] ?>, '<?= htmlspecialchars($row['subject'], ENT_QUOTES) ?>')">
                                     <i class="fas fa-trash"></i> Delete
                                 </button>
                             </div>
@@ -236,17 +236,28 @@ function stars(int $n): string {
 
 <!-- Delete confirm modal -->
 <div class="modal-overlay" id="deleteModal">
-    <div class="modal-box">
-        <i class="fas fa-triangle-exclamation" style="font-size:36px; color:#f59e0b;"></i>
-        <h3>Delete Feedback?</h3>
-        <p id="deleteModalText">Are you sure you want to delete this feedback?</p>
-        <div class="modal-actions">
-            <button class="btn-cancel-modal" onclick="closeDeleteModal()">Cancel</button>
+    <div class="modal modal-sm">
+
+        <div class="modal-header">
+            <h3><i class="fas fa-triangle-exclamation"></i> Delete Feedback?</h3>
+        </div>
+
+        <div class="modal-body">
+            <p id="deleteModalText" class="delete-warning">
+                Are you sure you want to delete this feedback?
+            </p>
+        </div>
+
+        <div class="modal-footer">
+            <button class="modal-btn-cancel" onclick="closefbDeleteModal()">Cancel</button>
             <form method="POST" id="deleteForm">
                 <input type="hidden" name="feedback_id" id="deleteFeedbackId">
-                <button type="submit" class="btn-confirm-delete">Yes, Delete</button>
+                <button type="submit" class="modal-btn-danger">
+                    <i class="fas fa-trash"></i> Yes, Delete
+                </button>
             </form>
         </div>
+
     </div>
 </div>
 
