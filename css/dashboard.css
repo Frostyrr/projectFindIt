@@ -1,7 +1,3 @@
-/* ============================================================
-   FindIt — Admin Dashboard  |  css/dashboard.css
-   ============================================================ */
-
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
 :root {
@@ -43,7 +39,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* ── Sidebar ────────────────────────────────────────────────── */
+/* Sidebar */
 .admin-sidebar {
     position: fixed;
     top: 0;
@@ -311,7 +307,7 @@ body {
 
 .section-heading a:hover { color: var(--green-700); }
 
-/* ── Stat cards ─────────────────────────────────────────────── */
+/* Stat cards */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -581,7 +577,7 @@ body {
     font-weight: 500;
 }
 
-/* ── Responsive ─────────────────────────────────────────────── */
+/* Responsive */
 @media (max-width: 1024px) {
     .stats-grid { grid-template-columns: 1fr 1fr; }
 }
@@ -594,7 +590,7 @@ body {
     .stats-grid { grid-template-columns: 1fr; }
 }
 
-/* ── Action button group ────────────────────────────────────── */
+/* Action button group */
 .action-group {
     display: flex;
     align-items: center;
@@ -623,7 +619,7 @@ body {
 .btn-edit:hover       { background: var(--blue-100);  border-color: var(--blue-500);  color: var(--blue-500);  }
 .btn-delete:hover     { background: var(--red-100);   border-color: var(--red-500);   color: var(--red-500);   }
 
-/* ── Flash alerts ───────────────────────────────────────────── */
+/* Flash alerts */
 .alert {
     display: flex;
     align-items: center;
@@ -663,7 +659,7 @@ body {
 
 .alert-close:hover { opacity: 1; }
 
-/* ── Modal overlay ──────────────────────────────────────────── */
+/* Modal overlay */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -683,7 +679,7 @@ body {
     pointer-events: all;
 }
 
-/* ── Modal box ──────────────────────────────────────────────── */
+/* Modal box */
 .modal {
     background: var(--surface);
     border-radius: var(--radius-lg);
@@ -702,7 +698,7 @@ body {
 
 .modal-sm { max-width: 420px; }
 
-/* ── Modal header ───────────────────────────────────────────── */
+/* Modal header */
 .modal-header {
     display: flex;
     align-items: center;
@@ -746,7 +742,7 @@ body {
     color: var(--red-500);
 }
 
-/* ── Modal body ─────────────────────────────────────────────── */
+/* Modal body */
 .modal-body {
     padding: 24px 26px;
     display: flex;
@@ -754,7 +750,7 @@ body {
     gap: 16px;
 }
 
-/* ── Form layout inside modal ───────────────────────────────── */
+/* Form layout inside modal */
 .modal-form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -799,7 +795,7 @@ body {
     box-shadow: 0 0 0 3px rgba(61,122,84,.11);
 }
 
-/* ── Delete warning ─────────────────────────────────────────── */
+/* Delete warning */
 .delete-warning-icon {
     display: flex;
     justify-content: center;
@@ -825,7 +821,7 @@ body {
     color: var(--ink-300);
 }
 
-/* ── Modal footer ───────────────────────────────────────────── */
+/* Modal footer */
 .modal-footer {
     display: flex;
     align-items: center;
@@ -901,12 +897,12 @@ body {
     .modal { border-radius: var(--radius-md); }
 }
 
-/* ── Three-column form row (edit modal) ─────────────────────── */
+/* Three-column form row (edit modal) */
 .modal-form-row.three-col {
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-/* ── Required field asterisk ────────────────────────────────── */
+/* Required field asterisk */
 .req {
     color: var(--red-500);
     margin-left: 2px;

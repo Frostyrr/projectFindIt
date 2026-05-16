@@ -83,7 +83,7 @@
 
 .filter-reset:hover { color: var(--red-500); }
 
-/* ── Cards grid ── */
+/* Cards grid */
 .items-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));

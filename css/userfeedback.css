@@ -1,4 +1,4 @@
-/* ── Filter bar (from items.css) ───────────────────────────── */
+/* Filter bar (from items.css) */
 .filter-bar {
     padding: 18px 26px 0;
     display: flex;
@@ -84,7 +84,7 @@
 
 .filter-reset:hover { color: var(--red-500); }
 
-/* ── Empty state ───────────────────────────────────────────── */
+/* Empty state */
 .cards-empty {
     grid-column: 1 / -1;
     display: flex;
@@ -100,7 +100,7 @@
     font-size: 14px;
 }
 
-/* ── Feedback grid ─────────────────────────────────────────── */
+/* Feedback grid */
 .feedback-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -108,7 +108,7 @@
     padding: 24px 26px;
 }
 
-/* ── Individual feedback card ──────────────────────────────── */
+/* Individual feedback card */
 .feedback-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -140,7 +140,7 @@
     color: var(--ink-900);
 }
 
-/* ── Category badges ───────────────────────────────────────── */
+/* Category badges */
 .feedback-category {
     font-size: 11px;
     font-weight: 600;
@@ -157,7 +157,7 @@
 .feedback-category.account    { background: #f0fdf4; color: #16a34a; }
 .feedback-category.other      { background: #f5f3ff; color: #7c3aed; }
 
-/* ── Card meta (user, date) ────────────────────────────────── */
+/* Card meta (user, date) */
 .feedback-meta {
     font-size: 11px;
     color: var(--ink-300);
@@ -167,7 +167,7 @@
     flex-wrap: wrap;
 }
 
-/* ── Message body ──────────────────────────────────────────── */
+/* Message body */
 .feedback-message {
     font-size: 11.5px;
     color: var(--ink-600);
@@ -181,7 +181,7 @@
     overflow: hidden;
 }
 
-/* ── Star rating ───────────────────────────────────────────── */
+/* Star rating */
 .feedback-stars {
     color: #f59e0b;
     font-size: 15px;
@@ -194,7 +194,7 @@
     font-weight: 500;
 }
 
-/* ── Card footer ───────────────────────────────────────────── */
+/* Card footer */
 .feedback-footer {
     display: flex;
     justify-content: space-between;
@@ -202,7 +202,7 @@
     margin-top: 4px;
 }
 
-/* ── Delete button ─────────────────────────────────────────── */
+/* Delete button */
 .btn-delete-feedback {
     background: #fef2f2;
     color: #dc2626;

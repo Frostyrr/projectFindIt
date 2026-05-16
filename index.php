@@ -104,7 +104,7 @@ $result = $conn->query($sql);
             </div>
 
             <div class="footer-links">
-                <a href="help.php">Help Center</a>
+                <a href="#how-it-works">Help Center</a>
                 <a href="browse.php">Browse Items</a>
                 <a href="report.php">Report Item</a>
                 <a href="#recent-reports">Recent Reports</a>

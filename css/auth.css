@@ -300,7 +300,6 @@ body {
     }
 }
 
-/* Large screens and up (optional refinements) */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     .auth-card form {
         width: 420px;
@@ -315,7 +314,6 @@ body {
     }
 }
 
-/* Mobile touch-friendly tap targets */
 @media (max-width: 768px) {
     .button, 
     .google-btn, 

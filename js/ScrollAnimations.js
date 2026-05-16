@@ -1,10 +1,6 @@
-/* ============================================================
-   FindIt — Subtle Scroll Animations
-   ============================================================ */
-
 document.addEventListener('DOMContentLoaded', function() {
     
-    // ── Observe elements as they enter viewport ──────────────
+    // Observe elements as they enter viewport
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -22,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // ── Navbar behavior ──────────────────────────────────────
+    // Navbar behavior
     const navbar = document.querySelector('.navbar');
     let lastScroll = 0;
     let scrollTimeout;
@@ -50,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, { passive: true });
     }
 
-    // ── Smooth scroll for anchor links ───────────────────────
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');

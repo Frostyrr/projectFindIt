@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
 
-/* ── Root tokens ────────────────────────────────────────────── */
+/* Root tokens  */
 :root {
     --green-900: #1a3d2b;
     --green-700: #2d6147;
@@ -27,7 +27,7 @@
     --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* ── Keyframe Animations ───────────────────────────────────── */
+/* Keyframe Animations */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
     to   { opacity: 1; transform: translateY(0);    }
@@ -69,7 +69,7 @@
     50%       { border-color: var(--green-300); box-shadow: 0 0 0 4px rgba(61,122,84,.08); }
 }
 
-/* ── Page wrapper ───────────────────────────────────────────── */
+/* Page wrapper */
 .browse-container {
     max-width: 1240px;
     margin: 90px auto 80px;
@@ -78,7 +78,7 @@
     animation: fadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
-/* ── Search section ─────────────────────────────────────────── */
+/* Search section */
 .search-section {
     margin-bottom: 40px;
     animation: fadeInUp 0.5s 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -112,7 +112,7 @@
     box-shadow: 0 0 0 4px rgba(61,122,84,.08), var(--shadow-md);
 }
 
-/* ── Search box ─────────────────────────────────────────────── */
+/* Search box */
 .search-box {
     position: relative;
     flex-grow: 1;
@@ -150,7 +150,7 @@
     opacity: 0.8;
 }
 
-/* ── Search button ──────────────────────────────────────────── */
+/* Search button */
 .search-icon-btn {
     position: absolute;
     right: 7px;
@@ -189,7 +189,7 @@
     transform: rotate(15deg);
 }
 
-/* ── Type filter buttons ────────────────────────────────────── */
+/* Type filter buttons */
 .type-filter-buttons {
     display: flex;
     gap: 8px;
@@ -259,14 +259,14 @@
     animation: fadeInScale 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
 }
 
-/* ── Cards grid ─────────────────────────────────────────────── */
+/* Cards grid  */
 .reports-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
     gap: 16px;
 }
 
-/* ── Staggered card entrance animation ─────────────────────── */
+/* Staggered card entrance animation */
 .report-card {
     background: var(--surface);
     border-radius: var(--radius-lg);
@@ -303,7 +303,7 @@
     transition: transform 0.1s ease;
 }
 
-/* ── Card image area ────────────────────────────────────────── */
+/* Card image area */
 .card-image-container {
     position: relative;
     width: 100%;
@@ -349,7 +349,7 @@
     animation: shimmer 1.5s infinite linear;
 }
 
-/* ── Badges ─────────────────────────────────────────────────── */
+/* Badges */
 .card-badges {
     position: absolute;
     top: 8px; left: 8px;
@@ -383,7 +383,7 @@
     transition: all var(--transition-bounce);
 }
 
-/* ── Card body ──────────────────────────────────────────────── */
+/* Card body */
 .card-content {
     display: flex;
     flex-direction: column;
@@ -439,7 +439,7 @@
     overflow: hidden;
 }
 
-/* ── Divider ────────────────────────────────────────────────── */
+/* Divider  */
 .card-divider {
     border: none;
     border-top: 1px solid var(--border);
@@ -449,7 +449,7 @@
 
 .report-card:hover .card-divider { border-color: #c8dfd0; }
 
-/* ── Card footer ────────────────────────────────────────────── */
+/* Card footer */
 .card-footer {
     display: flex;
     align-items: center;
@@ -471,7 +471,7 @@
 
 .report-card:hover .card-location { color: var(--ink-600); }
 
-/* ── View Details button ────────────────────────────────────── */
+/* View Details button */
 .view-details-btn {
     display: inline-flex;
     align-items: center;
@@ -524,7 +524,7 @@
     box-shadow: 0 4px 14px rgba(26,61,43,.3);
 }
 
-/* ── No results state ───────────────────────────────────────── */
+/* No results state */
 .no-results {
     grid-column: 1 / -1;
     display: flex;
@@ -557,7 +557,7 @@
     animation: floatUpDown 3s ease-in-out infinite;
 }
 
-/* ── Pagination ─────────────────────────────────────────────── */
+/* Pagination */
 .pagination {
     display: flex;
     align-items: center;
@@ -625,7 +625,7 @@
     user-select: none;
 }
 
-/* ── Results count / info bar ───────────────────────────────── */
+/* Results count / info bar */
 .results-info {
     display: flex;
     align-items: center;
@@ -683,7 +683,7 @@
         margin-bottom: 16px;
     }
 
-    /* ── Search form ──────────────────────────────────────────── */
+    /*  Search form */
     .search-filter-form {
         flex-direction: column;
         align-items: stretch;
@@ -707,7 +707,7 @@
         right: 6px;
     }
 
-    /* ── Sticky filter pill bar (HORIZONTAL SCROLL) ───────────── */
+    /* Sticky filter pill bar (HORIZONTAL SCROLL) */
     .type-filter-buttons {
         position: sticky;
         top: 56px;
@@ -745,7 +745,6 @@
         border-radius: 10px;
     }
 
-    /* Pills don't shrink — maintain full width */
     .type-btn {
         flex-shrink: 0;
         padding: 10px 15px;
@@ -756,13 +755,13 @@
         touch-action: manipulation;
     }
 
-    /* ── Results grid: 2 columns on mobile ────────────────────── */
+    /* Results grid: 2 columns on mobile */
     .reports-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
     }
 
-    /* ── Card adjustments ─────────────────────────────────────── */
+    /* Card adjustments */
     .report-card {
         border-radius: var(--radius-md);
     }
@@ -801,7 +800,7 @@
         aspect-ratio: 1 / 1; /* more compact */
     }
 
-    /* ─── Card footer: button full width for easier tapping ───── */
+    /* Card footer: button full width for easier tapping */
     .card-footer {
         flex-direction: column;
         align-items: stretch;
@@ -825,7 +824,7 @@
         border-radius: var(--radius-sm);
     }
 
-    /* ── Results info ─────────────────────────────────────────── */
+    /* Results info */
     .results-info {
         margin-top: 20px;
         margin-bottom: 8px;
@@ -835,7 +834,7 @@
         font-size: 12px;
     }
 
-    /* ── No results ───────────────────────────────────────────── */
+    /* No results */
     .no-results {
         padding: 48px 24px;
         margin-top: 20px;
@@ -849,7 +848,7 @@
         font-size: 36px;
     }
 
-    /* ── Pagination (horizontal scroll) ───────────────────────── */
+    /* Pagination (horizontal scroll) */
     .pagination {
         gap: 8px;
         margin-top: 32px;
@@ -948,7 +947,7 @@
     }
 }
 
-/* ── Safe area insets for notched phones ─────────────────────── */
+/* Safe area insets for notched phones */
 @supports (padding: env(safe-area-inset-bottom)) {
     @media (max-width: 768px) {
         .type-filter-buttons {
@@ -965,7 +964,7 @@
     }
 }
 
-/* ── Reduced motion preferences ───────────────────────────────── */
+/* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -981,7 +980,7 @@
     }
 }
 
-/* ── Reduced motion support ─────────────────────────────────── */
+/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
     .report-card,
     .search-section,
